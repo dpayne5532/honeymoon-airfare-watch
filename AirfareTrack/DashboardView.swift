@@ -165,6 +165,11 @@ private struct PriceCard: View {
                         change(latest.price - previous)
                     }
                 }
+                if adults > 1 {
+                    Text("\((latest.price / Double(adults)).formatted(.currency(code: currency).precision(.fractionLength(0)))) per person · total for \(adults)")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
                 Text("Updated \(latest.timestamp.formatted(.relative(presentation: .named)))")
                     .font(.caption)
                     .foregroundStyle(.secondary)

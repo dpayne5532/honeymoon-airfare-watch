@@ -11,7 +11,7 @@ final class FareStore {
     private(set) var lastRefreshed: Date?
 
     init() {
-        history = HistoryCache.load()
+        history = HistoryRemote.loadCache()
     }
 
     func prediction(target: Double?) -> FarePrediction? {
@@ -35,8 +35,7 @@ final class FareStore {
 
     /// Fetch, cache, and notify. Shared by foreground refresh and the background task.
     nonisolated static func download(settings: AppSettings) async throws -> FareHistory {
-        let (history, data) = try await HistoryClient().fetch()
-        HistoryCache.save(data)
+        let history = try await HistoryClient.fetch()
         await Notifier.evaluate(history, settings: settings)
         return history
     }

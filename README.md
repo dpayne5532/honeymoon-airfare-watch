@@ -28,7 +28,7 @@ iPhone app ◄── GitHub contents API ◄────────────
    - `NTFY_TOPIC` (optional): sends instant pushes via [ntfy.sh](https://ntfy.sh). Install the ntfy app and subscribe to the same hard-to-guess topic name.
    - Variable `TARGET_PRICE` (optional): your target fare, used for ntfy alerts.
 3. **Run the workflow once** from the Actions tab (**Track fare → Run workflow**) to record the first data point.
-4. **App:** open `AirfareTrack.xcodeproj` and run it on your phone. The repo (`dpayne5532/honeymoon-airfare-watch`, branch `master`) is hardcoded in `AirfareTrack/AppSettings.swift`, so there's nothing to configure.
+4. **App:** open `AirfareTrack.xcodeproj` and run it on your phone. The repo (`dpayne5532/honeymoon-airfare-watch`, branch `master`) is hardcoded in `FareKit/Sources/FareKit/HistoryRemote.swift`, so there's nothing to configure.
 
 ## Each daily run
 

@@ -4,8 +4,13 @@ and append it to data/history.json.
 
 Run daily by .github/workflows/track-fare.yml. Uses only the standard library.
 
+Each run costs 3 SerpApi searches (outbound list, return list, fare/booking
+options), plus 1 if UA 177 has to be re-searched. Runs are spaced
+MIN_INTERVAL_HOURS apart to stay under the account's monthly limit.
+
 Environment:
   SERPAPI_KEY   required. Also read from a .env file in the repo root.
+  FORCE         if "1", ignore the interval gate (manual runs).
   NTFY_TOPIC    optional. If set, sends a push via ntfy.sh on notable drops.
   TARGET_PRICE  optional. Sends a push when the fare is at or below this.
 """
@@ -26,6 +31,9 @@ HISTORY_PATH = ROOT / "data" / "history.json"
 ENV_PATH = ROOT / ".env"
 
 SERPAPI_URL = "https://serpapi.com/search.json"
+SERPAPI_ACCOUNT_URL = "https://serpapi.com/account.json"
+SEARCHES_PER_RUN = 3
+MIN_INTERVAL_HOURS = 9.5   # cron ticks every 2h, so runs land ~10h apart (~220 searches/month)
 TRAVEL_CLASS = {"economy": 1, "premium_economy": 2, "business": 3, "first": 4}
 
 
@@ -84,6 +92,54 @@ def departure_time(option: dict, flight_number: str) -> str | None:
     return None
 
 
+def summarize_alternatives(data: dict, tracked_flight: str, limit: int = 15) -> list[dict]:
+    """Other itineraries for the same dates: nonstops first, then fewest stops, then price.
+    Prices are round-trip totals for the party with that outbound's cheapest return."""
+    tracked = normalize_flight(tracked_flight)
+    results = []
+    for option in all_options(data):
+        segments = option.get("flights") or []
+        price = option.get("price")
+        if not segments or not isinstance(price, (int, float)):
+            continue
+        numbers = [normalize_flight(s.get("flight_number", "")) for s in segments]
+        if numbers == [tracked]:
+            continue  # that's the flight we already track
+        airlines = []
+        for seg in segments:
+            name = seg.get("airline")
+            if name and name not in airlines:
+                airlines.append(name)
+        results.append({
+            "price": price,
+            "stops": len(segments) - 1,
+            "airlines": airlines,
+            "flights": [s.get("flight_number", "") for s in segments],
+            "departure": (segments[0].get("departure_airport") or {}).get("time"),
+            "arrival": (segments[-1].get("arrival_airport") or {}).get("time"),
+            "durationMinutes": option.get("total_duration"),
+            "layovers": [
+                {"airport": l.get("id"), "minutes": l.get("duration"), "overnight": bool(l.get("overnight"))}
+                for l in (option.get("layovers") or [])
+            ],
+        })
+    results.sort(key=lambda r: (r["stops"], r["price"]))
+    return results[:limit]
+
+
+def fare_options(booking_data: dict, airline_name: str) -> list[dict]:
+    """The airline's own fare brands (Basic Economy, Economy, ...) for the itinerary."""
+    fares = []
+    for option in booking_data.get("booking_options") or []:
+        together = option.get("together") or {}
+        name, price = together.get("option_title"), together.get("price")
+        if together.get("book_with") == airline_name and name and isinstance(price, (int, float)):
+            if not any(f["name"] == name for f in fares):
+                fares.append({"name": name, "price": price})
+    fares.sort(key=lambda f: f["price"])
+    return fares
+
+
 def cheapest_price(data: dict) -> float | None:
     prices = [o["price"] for o in all_options(data) if isinstance(o.get("price"), (int, float))]
     return min(prices) if prices else None
@@ -127,8 +183,8 @@ def serpapi_search(params: dict) -> dict:
 
 # ---------------------------------------------------------------- core
 
-def build_snapshot(trip: dict, search=serpapi_search, api_key: str = "") -> tuple[dict, list[dict]]:
-    """Returns (snapshot, google_price_history). Raises FetchError."""
+def build_snapshot(trip: dict, search=serpapi_search, api_key: str = "") -> tuple[dict, list[dict], list[dict]]:
+    """Returns (snapshot, google_price_history, alternatives). Raises FetchError."""
     params = base_params(trip, api_key)
     outbound_data = search(params)
     outbound = find_option(outbound_data, trip["outboundFlight"])
@@ -145,9 +201,12 @@ def build_snapshot(trip: dict, search=serpapi_search, api_key: str = "") -> tupl
     insights = outbound_data.get("price_insights") or {}
     typical = insights.get("typical_price_range") or [None, None]
 
+    # Google's headline price is the cheapest fare (usually Basic Economy).
     price = outbound["price"]
+    fare_name = "Basic Economy"
     match = "outbound_only"
     return_flight = None
+    fares: list[dict] = []
 
     token = outbound.get("departure_token")
     if token:
@@ -157,10 +216,18 @@ def build_snapshot(trip: dict, search=serpapi_search, api_key: str = "") -> tupl
             price = ret["price"]
             match = "exact"
             return_flight = trip["returnFlight"]
+            if ret.get("booking_token"):
+                airline = (outbound.get("flights") or [{}])[0].get("airline") or "United"
+                fares = fare_options(search({**params, "booking_token": ret["booking_token"]}), airline)
+                wanted = next((f for f in fares if f["name"] == trip.get("fare")), None)
+                if wanted:
+                    price, fare_name = wanted["price"], wanted["name"]
 
     snapshot = {
         "timestamp": now_iso(),
         "price": price,
+        "fareName": fare_name,
+        "fares": fares,
         "match": match,
         "outboundFlight": trip["outboundFlight"],
         "outboundDeparture": departure_time(outbound, trip["outboundFlight"]),
@@ -179,7 +246,7 @@ def build_snapshot(trip: dict, search=serpapi_search, api_key: str = "") -> tupl
         for point in (insights.get("price_history") or [])
         if isinstance(point, list) and len(point) == 2
     ]
-    return snapshot, google_history
+    return snapshot, google_history, summarize_alternatives(outbound_data, trip["outboundFlight"])
 
 
 def load_history(trip: dict) -> dict:
@@ -223,6 +290,29 @@ def send_ntfy(topic: str, message: str) -> None:
         print(f"ntfy failed: {e}", file=sys.stderr)
 
 
+def searches_left(api_key: str) -> int | None:
+    """Remaining searches on the SerpApi account (this lookup is free)."""
+    try:
+        url = SERPAPI_ACCOUNT_URL + "?" + urllib.parse.urlencode({"api_key": api_key})
+        with urllib.request.urlopen(url, timeout=30) as resp:
+            data = json.load(resp)
+        left = data.get("total_searches_left", data.get("plan_searches_left"))
+        return int(left) if left is not None else None
+    except (urllib.error.URLError, ValueError, json.JSONDecodeError):
+        return None
+
+
+def hours_since_last_run(history: dict) -> float | None:
+    # Failed attempts count too, so an outage can't burn searches every 2 hours.
+    stamps = [s["timestamp"] for s in history.get("snapshots", [])]
+    if (history.get("lastError") or {}).get("timestamp"):
+        stamps.append(history["lastError"]["timestamp"])
+    if not stamps:
+        return None
+    last = datetime.strptime(max(stamps), "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+    return (datetime.now(timezone.utc) - last).total_seconds() / 3600
+
+
 def main() -> int:
     load_dotenv()
     trip = json.loads(TRIP_PATH.read_text())
@@ -237,8 +327,20 @@ def main() -> int:
         return 1
 
     history = load_history(trip)
+
+    if os.environ.get("FORCE") != "1":
+        since = hours_since_last_run(history)
+        if since is not None and since < MIN_INTERVAL_HOURS:
+            print(f"Last check was {since:.1f}h ago; next one after {MIN_INTERVAL_HOURS}h. Skipping.")
+            return 0
+
+    left = searches_left(api_key)
+    if left is not None and left < SEARCHES_PER_RUN + 1:
+        print(f"Only {left} SerpApi searches left this month; skipping to stay under the limit.")
+        return 0
+
     try:
-        snapshot, google_history = build_snapshot(trip, api_key=api_key)
+        snapshot, google_history, alternatives = build_snapshot(trip, api_key=api_key)
     except FetchError as e:
         history["lastError"] = {"timestamp": now_iso(), "message": str(e)}
         history["updatedAt"] = now_iso()
@@ -254,11 +356,13 @@ def main() -> int:
     history["snapshots"].append(snapshot)
     if google_history:
         history["googlePriceHistory"] = google_history
+    if alternatives:
+        history["alternatives"] = alternatives
     history["lastError"] = None
     history["updatedAt"] = now_iso()
     save_history(history)
 
-    print(f"{snapshot['timestamp']}: ${snapshot['price']:,} ({snapshot['match']}), "
+    print(f"{snapshot['timestamp']}: ${snapshot['price']:,} {snapshot['fareName']} ({snapshot['match']}), "
           f"cheapest round trip ${snapshot['cheapestRoundTrip']}, level {snapshot['priceLevel']}")
 
     topic = os.environ.get("NTFY_TOPIC", "").strip()

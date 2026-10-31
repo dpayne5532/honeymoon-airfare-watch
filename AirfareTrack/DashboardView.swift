@@ -56,12 +56,27 @@ struct DashboardView: View {
         }
 
         if let prediction = FarePredictor.predict(history: history, target: target), let latest = history.latest {
-            PriceCard(latest: latest, stats: prediction.stats, currency: history.trip.currency, adults: history.trip.adults)
+            PriceCard(latest: latest, stats: prediction.stats, fare: history.trip.trackedFare,
+                      currency: history.trip.currency, adults: history.trip.adults)
             PredictionCard(prediction: prediction, currency: history.trip.currency)
             Card {
                 PriceChartView(history: history, target: target)
             }
             StatsGrid(stats: prediction.stats, cheapestRoute: latest.cheapestRoundTrip, currency: history.trip.currency)
+        } else {
+            ContentUnavailableView(
+                "No \(history.trip.trackedFare) prices yet",
+                systemImage: "clock.arrow.circlepath",
+                description: Text("The GitHub Action hasn't recorded this fare yet. Run it manually from the Actions tab to get the first data point.")
+            )
+        }
+
+        if !history.latestFares.isEmpty {
+            FareOptionsCard(fares: history.latestFares, tracked: history.trip.trackedFare,
+                            currency: history.trip.currency, adults: history.trip.adults)
+        }
+
+        if !history.snapshots.isEmpty {
             NavigationLink {
                 HistoryListView(history: history)
             } label: {
@@ -75,18 +90,17 @@ struct DashboardView: View {
                 .background(Color(.secondarySystemGroupedBackground), in: .rect(cornerRadius: 16))
             }
             .buttonStyle(.plain)
-            Text("Predictions are heuristics based on this flight's price history, Google's route rating, and typical booking curves. They aren't guarantees.")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
-        } else {
-            ContentUnavailableView(
-                "No prices yet",
-                systemImage: "clock.arrow.circlepath",
-                description: Text("The daily GitHub Action hasn't recorded a fare yet. Run it manually from the Actions tab to get the first data point.")
-            )
         }
+
+        if !history.alternatives.isEmpty {
+            AlternativesSection(history: history)
+        }
+
+        Text("Predictions are heuristics based on this flight's price history, Google's route rating, and typical booking curves. They aren't guarantees.")
+            .font(.caption)
+            .foregroundStyle(.secondary)
+            .multilineTextAlignment(.center)
+            .padding(.horizontal)
     }
 }
 
@@ -154,13 +168,14 @@ private struct TripHeader: View {
 private struct PriceCard: View {
     let latest: FareSnapshot
     let stats: FareStats
+    let fare: String
     let currency: String
     let adults: Int
 
     var body: some View {
         Card {
             VStack(alignment: .leading, spacing: 6) {
-                Text("Current round-trip fare").font(.subheadline).foregroundStyle(.secondary)
+                Text("\(fare) · round trip").font(.subheadline).foregroundStyle(.secondary)
                 HStack(alignment: .firstTextBaseline) {
                     Text(latest.price, format: .currency(code: currency).precision(.fractionLength(0)))
                         .font(.system(size: 44, weight: .bold, design: .rounded))

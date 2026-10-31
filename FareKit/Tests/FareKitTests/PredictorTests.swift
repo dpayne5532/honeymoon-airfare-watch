@@ -114,3 +114,23 @@ private func history(_ prices: [Double], daysOut: Int, level: String? = nil) -> 
     // 16:40 MDT (UTC-6) == 22:40 UTC
     #expect(timed.date == ISO8601DateFormatter().date(from: "2027-04-19T22:40:00Z"))
 }
+
+@Test func onlyTrackedFareIsCharted() throws {
+    var economyTrip = trip
+    economyTrip.fare = "Economy"
+    let t = Date(timeIntervalSince1970: 1_800_000_000)
+    let h = FareHistory(trip: economyTrip, snapshots: [
+        FareSnapshot(timestamp: t, price: 2670),   // legacy Basic Economy
+        FareSnapshot(timestamp: t.addingTimeInterval(3600), price: 3150, fareName: "Economy",
+                     fares: [FareOption(name: "Basic Economy", price: 2670), FareOption(name: "Economy", price: 3150)]),
+    ])
+    #expect(h.sortedSnapshots.map(\.price) == [3150])
+    #expect(h.latestFares.count == 2)
+}
+
+@Test func decodesAlternatives() throws {
+    let json = #"{"trip":{"origin":"DEN","destination":"FCO","outboundDate":"2027-04-19","returnDate":"2027-04-29","outboundFlight":"UA177","returnFlight":"UA178","adults":2,"travelClass":"economy","currency":"USD","fare":"Economy"},"snapshots":[],"alternatives":[{"price":1797,"stops":1,"airlines":["Turkish Airlines"],"flights":["TK 202","TK 1361"],"departure":"2027-04-19 20:25","arrival":"2027-04-20 22:35","durationMinutes":1090,"layovers":[{"airport":"IST","minutes":245,"overnight":false}]}]}"#
+    let h = try FareHistory.decode(Data(json.utf8))
+    #expect(h.trip.trackedFare == "Economy")
+    #expect(h.alternatives.first?.layovers.first?.airport == "IST")
+}

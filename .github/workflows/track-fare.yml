@@ -3,7 +3,7 @@ name: Track fare
 
 on:
   schedule:
-    - cron: "23 5,13,21 * * *"   # every 8 hours: ~10:23pm, 6:23am, 2:23pm Mountain (MST)
+    - cron: "23 */2 * * *"   # tick every 2h; fetch_fare.py only searches when 9.5h+ since last check (~every 10h)
   workflow_dispatch:
 
 permissions:
@@ -27,6 +27,7 @@ jobs:
           SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
           TARGET_PRICE: ${{ vars.TARGET_PRICE }}
+          FORCE: ${{ github.event_name == 'workflow_dispatch' && '1' || '0' }}
         run: python3 fetcher/fetch_fare.py
 
       - name: Commit history

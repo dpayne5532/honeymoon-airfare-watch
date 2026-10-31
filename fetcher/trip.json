@@ -7,5 +7,6 @@
   "returnFlight": "UA178",
   "adults": 2,
   "travelClass": "economy",
-  "currency": "USD"
+  "currency": "USD",
+  "fare": "Economy"
 }

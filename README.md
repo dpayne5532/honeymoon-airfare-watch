@@ -16,7 +16,7 @@ iPhone app ◄── GitHub contents API ◄────────────
 | `fetcher/fetch_fare.py` | Python script (stdlib only). Finds UA 177 and then UA 178 in Google Flights results and appends a snapshot. |
 | `fetcher/trip.json` | The trip being tracked. Edit this to change flights or dates. |
 | `data/history.json` | All recorded prices, plus Google's route price history. |
-| `.github/workflows/track-fare.yml` | Runs every 8 hours (05:23, 13:23, 21:23 UTC) and commits each new snapshot. |
+| `.github/workflows/track-fare.yml` | Ticks every 2 hours; the fetcher only searches when ~10 hours have passed since the last check, and commits each new snapshot. |
 | `FareKit/` | Swift package with the models and the prediction engine (`swift test`). |
 | `AirfareTrack/` | SwiftUI iOS app. |
 
@@ -32,9 +32,10 @@ iPhone app ◄── GitHub contents API ◄────────────
 
 ## Each daily run
 
-- Costs 2 SerpApi searches: one for outbound options, one for returns paired with UA 177. If UA 177 isn't in the results, a third search restricted to United nonstops is used. At 3 runs a day that's about 180 searches a month.
+- Costs 3 SerpApi searches: outbound options, returns paired with UA 177, and United's fare options (Basic Economy → Premium) for UA 177 + UA 178. If UA 177 isn't in the results, one extra search restricted to United nonstops is used. Checks are ~10 hours apart, about 220 searches a month, to stay under the 240/month plan. Before each check it reads the account's remaining searches (free) and skips if there aren't enough.
+- The main tracked price is the **Economy** fare (`fare` in `trip.json`). Every check also records all fare options. If Economy isn't offered, it records the cheapest fare under its own name, and the app leaves it off the main chart.
 - Records the price for the exact UA 177 + UA 178 itinerary (`match: "exact"`). If UA 178 isn't listed, it records UA 177 with the cheapest return instead (`outbound_only`).
-- Also saves the cheapest DEN–FCO round trip, Google's low/typical/high rating for the route, and Google's recent route price history.
+- Also saves the cheapest DEN–FCO round trip, Google's low/typical/high rating for the route, Google's recent route price history, and the top other itineraries for the same dates (nonstops first).
 - Stops automatically after the departure date.
 
 ## Prediction

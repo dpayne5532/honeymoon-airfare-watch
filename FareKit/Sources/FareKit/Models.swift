@@ -7,19 +7,23 @@ public struct FareHistory: Codable, Sendable, Equatable {
     public var snapshots: [FareSnapshot]
     public var googlePriceHistory: [PricePoint]
     public var lastError: FetchFailure?
+    /// Other itineraries for the same dates from the latest check (nonstops first).
+    public var alternatives: [AlternativeFlight]
 
     public init(
         trip: Trip,
         updatedAt: Date? = nil,
         snapshots: [FareSnapshot] = [],
         googlePriceHistory: [PricePoint] = [],
-        lastError: FetchFailure? = nil
+        lastError: FetchFailure? = nil,
+        alternatives: [AlternativeFlight] = []
     ) {
         self.trip = trip
         self.updatedAt = updatedAt
         self.snapshots = snapshots
         self.googlePriceHistory = googlePriceHistory
         self.lastError = lastError
+        self.alternatives = alternatives
     }
 
     public init(from decoder: Decoder) throws {
@@ -29,11 +33,18 @@ public struct FareHistory: Codable, Sendable, Equatable {
         snapshots = try c.decodeIfPresent([FareSnapshot].self, forKey: .snapshots) ?? []
         googlePriceHistory = try c.decodeIfPresent([PricePoint].self, forKey: .googlePriceHistory) ?? []
         lastError = try c.decodeIfPresent(FetchFailure.self, forKey: .lastError)
+        alternatives = try c.decodeIfPresent([AlternativeFlight].self, forKey: .alternatives) ?? []
     }
 
-    /// Snapshots sorted oldest → newest.
+    /// Snapshots of the tracked fare (e.g. Economy), sorted oldest → newest.
+    /// Checks that only got a different fare are left out so the series stays comparable.
     public var sortedSnapshots: [FareSnapshot] {
-        snapshots.sorted { $0.timestamp < $1.timestamp }
+        snapshots.filter { $0.fareLabel == trip.trackedFare }.sorted { $0.timestamp < $1.timestamp }
+    }
+
+    /// Every fare option for UA 177 + UA 178 from the most recent check that had them.
+    public var latestFares: [FareOption] {
+        snapshots.sorted { $0.timestamp < $1.timestamp }.last(where: { !($0.fares ?? []).isEmpty })?.fares ?? []
     }
 
     public var latest: FareSnapshot? { sortedSnapshots.last }
@@ -45,7 +56,8 @@ public struct FareHistory: Codable, Sendable, Equatable {
         var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = zone
 
-        if let stamp = sortedSnapshots.last(where: { $0.outboundDeparture != nil })?.outboundDeparture {
+        if let stamp = snapshots.sorted(by: { $0.timestamp < $1.timestamp })
+            .last(where: { $0.outboundDeparture != nil })?.outboundDeparture {
             let formatter = DateFormatter()
             formatter.locale = Locale(identifier: "en_US_POSIX")
             formatter.timeZone = zone
@@ -78,12 +90,15 @@ public struct Trip: Codable, Sendable, Equatable {
     public var adults: Int
     public var travelClass: String
     public var currency: String
+    /// Fare brand the app tracks, e.g. "Economy". Older data had none (Google's cheapest).
+    public var fare: String?
 
     public init(
         origin: String, destination: String,
         outboundDate: String, returnDate: String,
         outboundFlight: String, returnFlight: String,
-        adults: Int, travelClass: String, currency: String
+        adults: Int, travelClass: String, currency: String,
+        fare: String? = nil
     ) {
         self.origin = origin
         self.destination = destination
@@ -94,7 +109,10 @@ public struct Trip: Codable, Sendable, Equatable {
         self.adults = adults
         self.travelClass = travelClass
         self.currency = currency
+        self.fare = fare
     }
+
+    public var trackedFare: String { fare ?? "Basic Economy" }
 
     public var departure: Date? { Self.parseDay(outboundDate) }
 
@@ -133,15 +151,22 @@ public struct FareSnapshot: Codable, Sendable, Equatable, Identifiable {
     public var typicalHigh: Double?
     /// Scheduled local departure of the outbound flight, "yyyy-MM-dd HH:mm".
     public var outboundDeparture: String?
+    /// Fare brand `price` refers to. Missing on early data, which was Basic Economy.
+    public var fareName: String?
+    /// All of the airline's fare options for the itinerary at this check.
+    public var fares: [FareOption]?
 
     public var id: Date { timestamp }
+    public var fareLabel: String { fareName ?? "Basic Economy" }
     public var isExactMatch: Bool { match == "exact" }
 
     public init(
         timestamp: Date, price: Double, match: String = "exact",
         cheapestRoundTrip: Double? = nil, priceLevel: String? = nil,
         typicalLow: Double? = nil, typicalHigh: Double? = nil,
-        outboundDeparture: String? = nil
+        outboundDeparture: String? = nil,
+        fareName: String? = nil,
+        fares: [FareOption]? = nil
     ) {
         self.timestamp = timestamp
         self.price = price
@@ -151,6 +176,8 @@ public struct FareSnapshot: Codable, Sendable, Equatable, Identifiable {
         self.typicalLow = typicalLow
         self.typicalHigh = typicalHigh
         self.outboundDeparture = outboundDeparture
+        self.fareName = fareName
+        self.fares = fares
     }
 }
 
@@ -168,4 +195,37 @@ public struct PricePoint: Codable, Sendable, Equatable, Identifiable {
 public struct FetchFailure: Codable, Sendable, Equatable {
     public var timestamp: Date
     public var message: String
+}
+
+public struct FareOption: Codable, Sendable, Equatable, Identifiable {
+    public var name: String
+    public var price: Double
+    public var id: String { name }
+
+    public init(name: String, price: Double) {
+        self.name = name
+        self.price = price
+    }
+}
+
+public struct AlternativeFlight: Codable, Sendable, Equatable, Identifiable {
+    public struct Layover: Codable, Sendable, Equatable {
+        public var airport: String?
+        public var minutes: Int?
+        public var overnight: Bool?
+    }
+
+    /// Round-trip total for the party: this outbound with its cheapest return (lowest fare).
+    public var price: Double
+    public var stops: Int
+    public var airlines: [String]
+    public var flights: [String]
+    /// Local times, "yyyy-MM-dd HH:mm".
+    public var departure: String?
+    public var arrival: String?
+    public var durationMinutes: Int?
+    public var layovers: [Layover]
+
+    public var id: String { flights.joined(separator: "-") }
+    public var isNonstop: Bool { stops == 0 }
 }

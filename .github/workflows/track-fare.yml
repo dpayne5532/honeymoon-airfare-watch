@@ -3,7 +3,7 @@ name: Track fare
 
 on:
   schedule:
-    - cron: "23 13 * * *"   # daily, ~7am Mountain
+    - cron: "23 5,13,21 * * *"   # every 8 hours: ~10:23pm, 6:23am, 2:23pm Mountain (MST)
   workflow_dispatch:
 
 permissions:

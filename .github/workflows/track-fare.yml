@@ -1,4 +1,5 @@
 name: Track fare
+# Daily fare check: fetches UA 177/178 price via SerpApi and commits data/history.json.
 
 on:
   schedule:

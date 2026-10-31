@@ -32,7 +32,7 @@ iPhone app ◄── GitHub contents API ◄────────────
 
 ## Each daily run
 
-- Costs 2 SerpApi searches: one for outbound options, one for returns paired with UA 177. If UA 177 isn't in the results, a third search restricted to United nonstops is used. At 3 runs a day that.s about 180 searches a month.
+- Costs 2 SerpApi searches: one for outbound options, one for returns paired with UA 177. If UA 177 isn't in the results, a third search restricted to United nonstops is used. At 3 runs a day that's about 180 searches a month.
 - Records the price for the exact UA 177 + UA 178 itinerary (`match: "exact"`). If UA 178 isn't listed, it records UA 177 with the cheapest return instead (`outbound_only`).
 - Also saves the cheapest DEN–FCO round trip, Google's low/typical/high rating for the route, and Google's recent route price history.
 - Stops automatically after the departure date.

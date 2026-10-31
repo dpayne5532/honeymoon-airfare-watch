@@ -10,8 +10,20 @@
     "travelClass": "economy",
     "currency": "USD"
   },
-  "updatedAt": null,
-  "snapshots": [],
+  "updatedAt": "2026-10-31T18:17:21Z",
+  "snapshots": [
+    {
+      "timestamp": "2026-10-31T18:17:21Z",
+      "price": 2670,
+      "match": "exact",
+      "outboundFlight": "UA177",
+      "returnFlight": "UA178",
+      "cheapestRoundTrip": 1797,
+      "priceLevel": "typical",
+      "typicalLow": 1400,
+      "typicalHigh": 2400
+    }
+  ],
   "googlePriceHistory": [],
   "lastError": null
 }

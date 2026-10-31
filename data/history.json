@@ -1,0 +1,17 @@
+{
+  "trip": {
+    "origin": "DEN",
+    "destination": "FCO",
+    "outboundDate": "2027-04-19",
+    "returnDate": "2027-04-29",
+    "outboundFlight": "UA177",
+    "returnFlight": "UA178",
+    "adults": 2,
+    "travelClass": "economy",
+    "currency": "USD"
+  },
+  "updatedAt": null,
+  "snapshots": [],
+  "googlePriceHistory": [],
+  "lastError": null
+}

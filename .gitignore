@@ -1,0 +1,19 @@
+# Secrets
+.env
+*.env
+
+# Xcode
+xcuserdata/
+DerivedData/
+*.xcuserstate
+build/
+
+# SwiftPM
+.build/
+.swiftpm/
+
+# Python
+__pycache__/
+*.pyc
+
+.DS_Store

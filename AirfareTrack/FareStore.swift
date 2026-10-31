@@ -1,0 +1,66 @@
+import BackgroundTasks
+import FareKit
+import Foundation
+import Observation
+
+@Observable
+final class FareStore {
+    private(set) var history: FareHistory?
+    private(set) var isLoading = false
+    private(set) var errorMessage: String?
+    private(set) var lastRefreshed: Date?
+
+    init() {
+        history = HistoryCache.load()
+    }
+
+    var isConfigured: Bool { AppSettings.load().isConfigured }
+
+    func prediction(target: Double?) -> FarePrediction? {
+        guard let history else { return nil }
+        return FarePredictor.predict(history: history, target: target)
+    }
+
+    func refresh() async {
+        let settings = AppSettings.load()
+        guard settings.isConfigured else {
+            errorMessage = nil
+            return
+        }
+        isLoading = true
+        defer { isLoading = false }
+        do {
+            let history = try await Self.download(settings: settings)
+            self.history = history
+            errorMessage = nil
+            lastRefreshed = .now
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+    }
+
+    /// Fetch, cache, and notify. Shared by foreground refresh and the background task.
+    nonisolated static func download(settings: AppSettings) async throws -> FareHistory {
+        let (history, data) = try await HistoryClient(settings: settings).fetch()
+        HistoryCache.save(data)
+        await Notifier.evaluate(history, settings: settings)
+        return history
+    }
+}
+
+nonisolated enum BackgroundRefresh {
+    static let identifier = "co.danpayne.AirfareTrack.refresh"
+
+    static func schedule() {
+        let request = BGAppRefreshTaskRequest(identifier: identifier)
+        request.earliestBeginDate = Date(timeIntervalSinceNow: 4 * 3600)
+        try? BGTaskScheduler.shared.submit(request)
+    }
+
+    static func run() async {
+        schedule()
+        let settings = AppSettings.load()
+        guard settings.isConfigured else { return }
+        _ = try? await FareStore.download(settings: settings)
+    }
+}

@@ -42,6 +42,10 @@ struct DashboardView: View {
 
     @ViewBuilder
     private func content(_ history: FareHistory) -> some View {
+        if let wheelsUp = history.wheelsUp {
+            CountdownCard(wheelsUp: wheelsUp, flight: history.trip.outboundFlight)
+        }
+
         TripHeader(trip: history.trip)
 
         if let failure = history.lastError {
@@ -57,7 +61,7 @@ struct DashboardView: View {
             Card {
                 PriceChartView(history: history, target: target)
             }
-            StatsGrid(stats: prediction.stats, currency: history.trip.currency)
+            StatsGrid(stats: prediction.stats, cheapestRoute: latest.cheapestRoundTrip, currency: history.trip.currency)
             NavigationLink {
                 HistoryListView(history: history)
             } label: {
@@ -292,6 +296,7 @@ private struct BulletLabelStyle: LabelStyle {
 
 private struct StatsGrid: View {
     let stats: FareStats
+    let cheapestRoute: Double?
     let currency: String
 
     var body: some View {
@@ -302,7 +307,7 @@ private struct StatsGrid: View {
             }
             GridRow {
                 tile("7-day avg", stats.average7Day.map(money) ?? "–", "chart.bar")
-                tile("Until departure", "\(stats.daysToDeparture) days", "calendar")
+                tile("Cheapest DEN–FCO", cheapestRoute.map(money) ?? "–", "tag")
             }
         }
     }

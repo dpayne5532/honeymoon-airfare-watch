@@ -75,6 +75,15 @@ def find_option(data: dict, flight_number: str) -> dict | None:
     return matches[0][2]
 
 
+def departure_time(option: dict, flight_number: str) -> str | None:
+    """Local departure time ("YYYY-MM-DD HH:MM") of the matching segment."""
+    target = normalize_flight(flight_number)
+    for segment in option.get("flights") or []:
+        if normalize_flight(segment.get("flight_number", "")) == target:
+            return (segment.get("departure_airport") or {}).get("time")
+    return None
+
+
 def cheapest_price(data: dict) -> float | None:
     prices = [o["price"] for o in all_options(data) if isinstance(o.get("price"), (int, float))]
     return min(prices) if prices else None
@@ -154,6 +163,7 @@ def build_snapshot(trip: dict, search=serpapi_search, api_key: str = "") -> tupl
         "price": price,
         "match": match,
         "outboundFlight": trip["outboundFlight"],
+        "outboundDeparture": departure_time(outbound, trip["outboundFlight"]),
         "returnFlight": return_flight,
         "cheapestRoundTrip": cheapest_price(outbound_data),
         "priceLevel": insights.get("price_level"),

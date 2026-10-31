@@ -20,7 +20,8 @@ def option(price, *numbers, token=None):
 OUTBOUND = {
     "best_flights": [option(1400, "LH 481", "LH 232", token="lh")],
     "other_flights": [
-        option(1900, "UA 177", token="ua"),
+        {"price": 1900, "departure_token": "ua",
+         "flights": [{"flight_number": "UA 177", "departure_airport": {"id": "DEN", "time": "2027-04-19 16:40"}}]},
         option(1750, "UA 700", "UA 177", token="conn"),
     ],
     "price_insights": {
@@ -55,6 +56,7 @@ class FetchFareTests(unittest.TestCase):
         self.assertEqual(snap["price"], 2050)
         self.assertEqual(snap["match"], "exact")
         self.assertEqual(snap["cheapestRoundTrip"], 1400)
+        self.assertEqual(snap["outboundDeparture"], "2027-04-19 16:40")
         self.assertEqual((snap["typicalLow"], snap["typicalHigh"]), (1300, 1800))
         self.assertEqual(search.calls[1]["departure_token"], "ua")
         self.assertEqual(len(google), 2)

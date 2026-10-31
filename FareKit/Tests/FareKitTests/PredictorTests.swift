@@ -102,3 +102,15 @@ private func history(_ prices: [Double], daysOut: Int, level: String? = nil) -> 
     #expect(h.snapshots.isEmpty)
     #expect(h.updatedAt == nil)
 }
+
+@Test func wheelsUpUsesRecordedDepartureTime() throws {
+    var h = FareHistory(trip: trip)
+    let dateOnly = try #require(h.wheelsUp)
+    #expect(dateOnly.hasTime == false)
+
+    h.snapshots = [FareSnapshot(timestamp: .now, price: 2670, outboundDeparture: "2027-04-19 16:40")]
+    let timed = try #require(h.wheelsUp)
+    #expect(timed.hasTime)
+    // 16:40 MDT (UTC-6) == 22:40 UTC
+    #expect(timed.date == ISO8601DateFormatter().date(from: "2027-04-19T22:40:00Z"))
+}

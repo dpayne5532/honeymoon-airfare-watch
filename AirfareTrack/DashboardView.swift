@@ -4,8 +4,6 @@ import SwiftUI
 struct DashboardView: View {
     @Environment(FareStore.self) private var store
     @AppStorage(SettingsKey.targetPrice) private var targetPrice: Double = 0
-    @AppStorage(SettingsKey.repoOwner) private var repoOwner = ""
-    @AppStorage(SettingsKey.repoName) private var repoName = ""
     @State private var showingSettings = false
 
     private var target: Double? { targetPrice > 0 ? targetPrice : nil }
@@ -16,16 +14,6 @@ struct DashboardView: View {
                 VStack(spacing: 16) {
                     if let history = store.history {
                         content(history)
-                    } else if repoOwner.isEmpty || repoName.isEmpty {
-                        ContentUnavailableView {
-                            Label("Connect your tracker", systemImage: "airplane.departure")
-                        } description: {
-                            Text("Enter the GitHub repo where the daily fare job saves its history.")
-                        } actions: {
-                            Button("Open Settings") { showingSettings = true }
-                                .buttonStyle(.borderedProminent)
-                        }
-                        .padding(.top, 80)
                     } else if store.isLoading {
                         ProgressView().padding(.top, 120)
                     }

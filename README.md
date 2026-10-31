@@ -22,13 +22,13 @@ iPhone app ◄── GitHub contents API ◄────────────
 
 ## Setup
 
-1. **Push to GitHub.** The repo can be private.
+1. **Push to GitHub.** The repo must stay public, because the app reads it without a token.
 2. **Add secrets** (Settings → Secrets and variables → Actions):
    - `SERPAPI_KEY` (required)
    - `NTFY_TOPIC` (optional): sends instant pushes via [ntfy.sh](https://ntfy.sh). Install the ntfy app and subscribe to the same hard-to-guess topic name.
    - Variable `TARGET_PRICE` (optional): your target fare, used for ntfy alerts.
 3. **Run the workflow once** from the Actions tab (**Track fare → Run workflow**) to record the first data point.
-4. **App:** open `AirfareTrack.xcodeproj`, set your team, and run it on your phone. In Settings, enter your GitHub username, the repo name, and (for a private repo) a fine-grained token with **read-only Contents** access to this repo only.
+4. **App:** open `AirfareTrack.xcodeproj` and run it on your phone. The repo (`dpayne5532/honeymoon-airfare-watch`, branch `master`) is hardcoded in `AirfareTrack/AppSettings.swift`, so there's nothing to configure.
 
 ## Each daily run
 

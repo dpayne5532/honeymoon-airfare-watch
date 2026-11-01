@@ -1,4 +1,5 @@
-// Renders the app icon: Roman sunset, St. Peter's dome & cross, interlocked wedding rings.
+// Renders the app icon: Roman sunset, St. Peter's dome, Bernini's golden Gloria with the
+// Holy Spirit dove, and interlocked wedding rings joined by a gold cross (the sign of Catholic matrimony).
 // Usage: swift tools/make_icon.swift AirfareTrack/Assets.xcassets/AppIcon.appiconset/AppIcon.png
 import CoreGraphics
 import Foundation
@@ -30,6 +31,27 @@ func gradient(_ stops: [(UInt32, CGFloat)], alpha: CGFloat = 1) -> CGGradient {
     )!
 }
 
+// Fill each subpath on its own so overlapping shapes never cancel into holes.
+func fillPieces(_ path: CGPath) {
+    var piece = CGMutablePath()
+    path.applyWithBlock { element in
+        let e = element.pointee
+        let p = e.points
+        switch e.type {
+        case .moveToPoint:
+            if !piece.isEmpty { ctx.addPath(piece); ctx.fillPath() }
+            piece = CGMutablePath()
+            piece.move(to: p[0])
+        case .addLineToPoint: piece.addLine(to: p[0])
+        case .addQuadCurveToPoint: piece.addQuadCurve(to: p[1], control: p[0])
+        case .addCurveToPoint: piece.addCurve(to: p[2], control1: p[0], control2: p[1])
+        case .closeSubpath: piece.closeSubpath()
+        @unknown default: break
+        }
+    }
+    if !piece.isEmpty { ctx.addPath(piece); ctx.fillPath() }
+}
+
 // MARK: Sky — midnight → wine → rose-gold horizon (CG origin is bottom-left)
 ctx.drawLinearGradient(
     gradient([(0xF6B65C, 0), (0xE07A5F, 0.22), (0x9B2F55, 0.48), (0x3E1A4D, 0.75), (0x120C2B, 1)]),
@@ -53,6 +75,35 @@ for (x, y, r) in stars {
     ctx.setFillColor(rgb(0xFFF4DD, 0.85))
     ctx.fillEllipse(in: CGRect(x: x - r, y: y - r, width: r * 2, height: r * 2))
 }
+
+// MARK: Bernini's Gloria — golden rays bursting from the cross, like the Cathedra Petri window
+let gloriaCenter = CGPoint(x: 512, y: 758)
+ctx.saveGState()
+let rays = CGMutablePath()
+let rayCount = 40
+for i in 0..<rayCount {
+    let a = CGFloat(i) / CGFloat(rayCount) * 2 * .pi
+    let half = (i % 2 == 0 ? 0.013 : 0.008) * CGFloat.pi
+    let length: CGFloat = i % 2 == 0 ? 620 : 430
+    rays.move(to: gloriaCenter)
+    rays.addLine(to: CGPoint(x: gloriaCenter.x + cos(a - half) * length, y: gloriaCenter.y + sin(a - half) * length))
+    rays.addLine(to: CGPoint(x: gloriaCenter.x + cos(a + half) * length, y: gloriaCenter.y + sin(a + half) * length))
+    rays.closeSubpath()
+}
+ctx.addPath(rays)
+ctx.clip()
+ctx.drawRadialGradient(
+    CGGradient(colorsSpace: space, colors: [rgb(0xFFF1C2, 0.6), rgb(0xFFDB8A, 0.3), rgb(0xFFDB8A, 0.08), rgb(0xFFDB8A, 0)] as CFArray,
+               locations: [0, 0.4, 0.75, 1])!,
+    startCenter: gloriaCenter, startRadius: 0, endCenter: gloriaCenter, endRadius: 640, options: []
+)
+ctx.restoreGState()
+// Bright halo at the heart of the Gloria
+ctx.drawRadialGradient(
+    CGGradient(colorsSpace: space, colors: [rgb(0xFFF7DC, 0.45), rgb(0xFFE3A0, 0.18), rgb(0xFFE3A0, 0)] as CFArray,
+               locations: [0, 0.4, 1])!,
+    startCenter: gloriaCenter, startRadius: 0, endCenter: gloriaCenter, endRadius: 230, options: []
+)
 
 // MARK: Interlocked gold rings
 let ringRadius: CGFloat = 165
@@ -143,29 +194,8 @@ silhouette.addQuadCurve(to: CGPoint(x: 542, y: 620), control: CGPoint(x: 512, y:
 silhouette.closeSubpath()
 silhouette.addEllipse(in: CGRect(x: 501, y: 650, width: 22, height: 22))
 
-// Cross
-silhouette.addRect(CGRect(x: 505, y: 668, width: 14, height: 104))
-silhouette.addRect(CGRect(x: 482, y: 728, width: 60, height: 14))
-
-// Fill each subpath on its own so overlapping shapes never cancel into holes.
 ctx.setFillColor(ink)
-var piece = CGMutablePath()
-silhouette.applyWithBlock { element in
-    let e = element.pointee
-    let p = e.points
-    switch e.type {
-    case .moveToPoint:
-        if !piece.isEmpty { ctx.addPath(piece); ctx.fillPath() }
-        piece = CGMutablePath()
-        piece.move(to: p[0])
-    case .addLineToPoint: piece.addLine(to: p[0])
-    case .addQuadCurveToPoint: piece.addQuadCurve(to: p[1], control: p[0])
-    case .addCurveToPoint: piece.addCurve(to: p[2], control1: p[0], control2: p[1])
-    case .closeSubpath: piece.closeSubpath()
-    @unknown default: break
-    }
-}
-if !piece.isEmpty { ctx.addPath(piece); ctx.fillPath() }
+fillPieces(silhouette)
 
 // Lit windows in the drum: thin warm slits
 ctx.setFillColor(rgb(0xF2A65A, 0.55))
@@ -186,6 +216,65 @@ for i in 0..<12 {
     let x = 222 + CGFloat(i) * 50
     ctx.fill(CGRect(x: x, y: 118, width: 12, height: 52))
 }
+
+
+// MARK: Gold cross rising from the lantern through the rings
+let cross = CGMutablePath()
+cross.addLines(between: [
+    CGPoint(x: 500, y: 664), CGPoint(x: 524, y: 664), CGPoint(x: 524, y: 752), CGPoint(x: 564, y: 752),
+    CGPoint(x: 564, y: 776), CGPoint(x: 524, y: 776), CGPoint(x: 524, y: 832), CGPoint(x: 500, y: 832),
+    CGPoint(x: 500, y: 776), CGPoint(x: 460, y: 776), CGPoint(x: 460, y: 752), CGPoint(x: 500, y: 752),
+])
+cross.closeSubpath()
+ctx.saveGState()
+ctx.setShadow(offset: .zero, blur: 30, color: rgb(0xFFE2A0, 0.9))
+ctx.addPath(cross)
+ctx.setFillColor(rgb(0xF4D27E))
+ctx.fillPath()
+ctx.restoreGState()
+ctx.addPath(cross)
+ctx.setLineWidth(7)
+ctx.setLineJoin(.miter)
+ctx.setStrokeColor(rgb(0x2A0F22, 0.85))
+ctx.strokePath()
+ctx.saveGState()
+ctx.addPath(cross)
+ctx.clip()
+ctx.drawLinearGradient(gold, start: CGPoint(x: 460, y: 832), end: CGPoint(x: 564, y: 664), options: [])
+ctx.restoreGState()
+
+// MARK: The dove of the Holy Spirit, descending above the cross
+func dove(at c: CGPoint, scale k: CGFloat) -> CGPath {
+    var t = CGAffineTransform(translationX: c.x, y: c.y).scaledBy(x: k, y: k)
+    let p = CGMutablePath()
+    // body and head (head points down: descending)
+    p.addEllipse(in: CGRect(x: -13, y: -30, width: 26, height: 62), transform: t)
+    p.addEllipse(in: CGRect(x: -12, y: -50, width: 24, height: 24), transform: t)
+    // tail fan
+    p.move(to: CGPoint(x: -9, y: 22), transform: t)
+    p.addLine(to: CGPoint(x: -20, y: 66), transform: t)
+    p.addQuadCurve(to: CGPoint(x: 20, y: 66), control: CGPoint(x: 0, y: 76), transform: t)
+    p.addLine(to: CGPoint(x: 9, y: 22), transform: t)
+    p.closeSubpath()
+    // wings, raised and spread, with feathered trailing edges
+    for side in [CGFloat(-1), 1] {
+        t = CGAffineTransform(translationX: c.x, y: c.y).scaledBy(x: k * side, y: k)
+        p.move(to: CGPoint(x: 6, y: 16), transform: t)
+        p.addCurve(to: CGPoint(x: 118, y: 74), control1: CGPoint(x: 40, y: 50), control2: CGPoint(x: 80, y: 80), transform: t)
+        p.addQuadCurve(to: CGPoint(x: 98, y: 50), control: CGPoint(x: 116, y: 56), transform: t)
+        p.addQuadCurve(to: CGPoint(x: 82, y: 30), control: CGPoint(x: 96, y: 34), transform: t)
+        p.addQuadCurve(to: CGPoint(x: 62, y: 12), control: CGPoint(x: 78, y: 14), transform: t)
+        p.addQuadCurve(to: CGPoint(x: 8, y: -12), control: CGPoint(x: 40, y: -6), transform: t)
+        p.closeSubpath()
+    }
+    return p
+}
+let dovePath = dove(at: CGPoint(x: 512, y: 902), scale: 0.95)
+ctx.saveGState()
+ctx.setShadow(offset: .zero, blur: 26, color: rgb(0xFFE7B0, 0.95))
+ctx.setFillColor(rgb(0xFFFBF2))
+fillPieces(dovePath)
+ctx.restoreGState()
 
 // MARK: Write PNG
 let image = ctx.makeImage()!

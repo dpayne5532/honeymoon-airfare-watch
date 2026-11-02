@@ -11,7 +11,7 @@
     "currency": "USD",
     "fare": "Economy"
   },
-  "updatedAt": "2026-11-01T20:39:10Z",
+  "updatedAt": "2026-11-02T09:41:18Z",
   "snapshots": [
     {
       "timestamp": "2026-10-31T18:17:21Z",
@@ -154,6 +154,49 @@
       "priceLevel": null,
       "typicalLow": null,
       "typicalHigh": null
+    },
+    {
+      "timestamp": "2026-11-02T09:41:18Z",
+      "price": 3150,
+      "fareName": "Economy",
+      "fares": [
+        {
+          "name": "Basic Economy",
+          "price": 2670
+        },
+        {
+          "name": "Economy",
+          "price": 3150
+        },
+        {
+          "name": "Economy Fully Refundable",
+          "price": 3550
+        },
+        {
+          "name": "Economy Plus",
+          "price": 4374
+        },
+        {
+          "name": "Economy Plus Fully Refundable",
+          "price": 4774
+        },
+        {
+          "name": "Base Premium Economy",
+          "price": 6340
+        },
+        {
+          "name": "Premium Economy",
+          "price": 6940
+        }
+      ],
+      "match": "exact",
+      "outboundFlight": "UA177",
+      "outboundDeparture": "2027-04-19 17:30",
+      "returnFlight": "UA178",
+      "cheapestRoundTrip": 1797,
+      "priceLevel": "typical",
+      "typicalLow": 1400,
+      "typicalHigh": 2400
     }
   ],
   "googlePriceHistory": [],
@@ -286,57 +329,52 @@
       ]
     },
     {
-      "price": 1733,
-      "stops": 2,
+      "price": 3160,
+      "stops": 1,
       "airlines": [
-        "Delta",
-        "Scandinavian Airlines"
+        "United",
+        "Lufthansa City Airlines"
       ],
       "flights": [
-        "DL 444",
-        "SK 916",
-        "SK 681"
+        "UA 760",
+        "VL 1870"
       ],
-      "departure": "2027-04-19 06:30",
-      "arrival": "2027-04-20 11:05",
-      "durationMinutes": 1235,
+      "departure": "2027-04-19 20:25",
+      "arrival": "2027-04-20 18:15",
+      "durationMinutes": 830,
       "layovers": [
         {
-          "airport": "JFK",
-          "minutes": 305,
-          "overnight": false
-        },
-        {
-          "airport": "CPH",
-          "minutes": 80,
+          "airport": "MUC",
+          "minutes": 150,
           "overnight": false
         }
       ]
     },
     {
-      "price": 2249,
+      "price": 2252,
       "stops": 2,
       "airlines": [
-        "JetBlue",
-        "Icelandair"
+        "Alaska",
+        "Condor",
+        "Lufthansa"
       ],
       "flights": [
-        "B6 394",
-        "FI 630",
-        "FI 930"
+        "AS 682",
+        "DE 2033",
+        "LH 236"
       ],
-      "departure": "2027-04-19 13:35",
-      "arrival": "2027-04-20 14:35",
-      "durationMinutes": 1020,
+      "departure": "2027-04-19 12:49",
+      "arrival": "2027-04-20 17:50",
+      "durationMinutes": 1261,
       "layovers": [
         {
-          "airport": "BOS",
-          "minutes": 81,
+          "airport": "SEA",
+          "minutes": 175,
           "overnight": false
         },
         {
-          "airport": "KEF",
-          "minutes": 105,
+          "airport": "FRA",
+          "minutes": 190,
           "overnight": false
         }
       ]

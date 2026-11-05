@@ -11,7 +11,7 @@
     "currency": "USD",
     "fare": "Economy"
   },
-  "updatedAt": "2026-11-04T18:06:52Z",
+  "updatedAt": "2026-11-05T07:03:12Z",
   "snapshots": [
     {
       "timestamp": "2026-10-31T18:17:21Z",
@@ -369,13 +369,56 @@
       "priceLevel": "typical",
       "typicalLow": 1400,
       "typicalHigh": 2400
+    },
+    {
+      "timestamp": "2026-11-05T07:03:12Z",
+      "price": 3526,
+      "fareName": "Economy",
+      "fares": [
+        {
+          "name": "Basic Economy",
+          "price": 3046
+        },
+        {
+          "name": "Economy",
+          "price": 3526
+        },
+        {
+          "name": "Economy Fully Refundable",
+          "price": 3976
+        },
+        {
+          "name": "Economy Plus",
+          "price": 4750
+        },
+        {
+          "name": "Economy Plus Fully Refundable",
+          "price": 5200
+        },
+        {
+          "name": "Base Premium Economy",
+          "price": 6344
+        },
+        {
+          "name": "Premium Economy",
+          "price": 6944
+        }
+      ],
+      "match": "exact",
+      "outboundFlight": "UA177",
+      "outboundDeparture": "2027-04-19 17:30",
+      "returnFlight": "UA178",
+      "cheapestRoundTrip": 1764,
+      "priceLevel": "typical",
+      "typicalLow": 1400,
+      "typicalHigh": 2400
     }
   ],
   "googlePriceHistory": [],
   "lastError": null,
   "alternatives": [
     {
-      "price": 1760,
+      "price": 1764,
       "stops": 1,
       "airlines": [
         "Turkish Airlines"
@@ -396,7 +439,7 @@
       ]
     },
     {
-      "price": 2474,
+      "price": 2470,
       "stops": 1,
       "airlines": [
         "Alaska"
@@ -417,7 +460,7 @@
       ]
     },
     {
-      "price": 2677,
+      "price": 2673,
       "stops": 1,
       "airlines": [
         "Air Canada"
@@ -438,7 +481,29 @@
       ]
     },
     {
-      "price": 2686,
+      "price": 2680,
+      "stops": 1,
+      "airlines": [
+        "United",
+        "Lufthansa City Airlines"
+      ],
+      "flights": [
+        "UA 760",
+        "VL 1870"
+      ],
+      "departure": "2027-04-19 20:25",
+      "arrival": "2027-04-20 18:15",
+      "durationMinutes": 830,
+      "layovers": [
+        {
+          "airport": "MUC",
+          "minutes": 150,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 2683,
       "stops": 1,
       "airlines": [
         "Air Canada"
@@ -459,7 +524,7 @@
       ]
     },
     {
-      "price": 2708,
+      "price": 2707,
       "stops": 1,
       "airlines": [
         "Lufthansa"
@@ -480,7 +545,7 @@
       ]
     },
     {
-      "price": 2790,
+      "price": 2771,
       "stops": 1,
       "airlines": [
         "United"
@@ -501,7 +566,7 @@
       ]
     },
     {
-      "price": 3318,
+      "price": 2781,
       "stops": 1,
       "airlines": [
         "United"

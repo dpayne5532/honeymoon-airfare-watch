@@ -11,7 +11,7 @@
     "currency": "USD",
     "fare": "Economy"
   },
-  "updatedAt": "2026-11-05T07:03:12Z",
+  "updatedAt": "2026-11-05T16:35:18Z",
   "snapshots": [
     {
       "timestamp": "2026-10-31T18:17:21Z",
@@ -412,13 +412,56 @@
       "priceLevel": "typical",
       "typicalLow": 1400,
       "typicalHigh": 2400
+    },
+    {
+      "timestamp": "2026-11-05T16:35:18Z",
+      "price": 3472,
+      "fareName": "Economy",
+      "fares": [
+        {
+          "name": "Basic Economy",
+          "price": 2992
+        },
+        {
+          "name": "Economy",
+          "price": 3472
+        },
+        {
+          "name": "Economy Fully Refundable",
+          "price": 3922
+        },
+        {
+          "name": "Economy Plus",
+          "price": 4696
+        },
+        {
+          "name": "Economy Plus Fully Refundable",
+          "price": 5146
+        },
+        {
+          "name": "Base Premium Economy",
+          "price": 6344
+        },
+        {
+          "name": "Premium Economy",
+          "price": 6944
+        }
+      ],
+      "match": "exact",
+      "outboundFlight": "UA177",
+      "outboundDeparture": "2027-04-19 17:30",
+      "returnFlight": "UA178",
+      "cheapestRoundTrip": 1685,
+      "priceLevel": null,
+      "typicalLow": null,
+      "typicalHigh": null
     }
   ],
   "googlePriceHistory": [],
   "lastError": null,
   "alternatives": [
     {
-      "price": 1764,
+      "price": 1759,
       "stops": 1,
       "airlines": [
         "Turkish Airlines"
@@ -439,28 +482,7 @@
       ]
     },
     {
-      "price": 2470,
-      "stops": 1,
-      "airlines": [
-        "Alaska"
-      ],
-      "flights": [
-        "AS 682",
-        "AS 180"
-      ],
-      "departure": "2027-04-19 12:49",
-      "arrival": "2027-04-20 13:15",
-      "durationMinutes": 986,
-      "layovers": [
-        {
-          "airport": "SEA",
-          "minutes": 140,
-          "overnight": false
-        }
-      ]
-    },
-    {
-      "price": 2673,
+      "price": 2677,
       "stops": 1,
       "airlines": [
         "Air Canada"
@@ -481,29 +503,28 @@
       ]
     },
     {
-      "price": 2680,
+      "price": 2679,
       "stops": 1,
       "airlines": [
-        "United",
-        "Lufthansa City Airlines"
+        "United"
       ],
       "flights": [
-        "UA 760",
-        "VL 1870"
+        "UA 2865",
+        "UA 970"
       ],
-      "departure": "2027-04-19 20:25",
-      "arrival": "2027-04-20 18:15",
-      "durationMinutes": 830,
+      "departure": "2027-04-19 11:15",
+      "arrival": "2027-04-20 07:55",
+      "durationMinutes": 760,
       "layovers": [
         {
-          "airport": "MUC",
-          "minutes": 150,
+          "airport": "ORD",
+          "minutes": 66,
           "overnight": false
         }
       ]
     },
     {
-      "price": 2683,
+      "price": 2686,
       "stops": 1,
       "airlines": [
         "Air Canada"
@@ -524,7 +545,7 @@
       ]
     },
     {
-      "price": 2707,
+      "price": 2710,
       "stops": 1,
       "airlines": [
         "Lufthansa"
@@ -545,43 +566,51 @@
       ]
     },
     {
-      "price": 2771,
+      "price": 2712,
       "stops": 1,
       "airlines": [
-        "United"
+        "United",
+        "Lufthansa"
       ],
       "flights": [
-        "UA 1283",
-        "UA 510"
+        "UA 182",
+        "LH 232"
       ],
-      "departure": "2027-04-19 12:30",
-      "arrival": "2027-04-20 10:55",
-      "durationMinutes": 865,
+      "departure": "2027-04-19 15:45",
+      "arrival": "2027-04-20 12:30",
+      "durationMinutes": 765,
       "layovers": [
         {
-          "airport": "EWR",
-          "minutes": 109,
+          "airport": "FRA",
+          "minutes": 80,
           "overnight": false
         }
       ]
     },
     {
-      "price": 2781,
-      "stops": 1,
+      "price": 1685,
+      "stops": 2,
       "airlines": [
-        "United"
+        "Delta",
+        "Scandinavian Airlines"
       ],
       "flights": [
-        "UA 773",
-        "UA 40"
+        "DL 3709",
+        "SK 932",
+        "SK 691"
       ],
-      "departure": "2027-04-19 10:20",
-      "arrival": "2027-04-20 07:35",
-      "durationMinutes": 795,
+      "departure": "2027-04-19 12:59",
+      "arrival": "2027-04-20 18:35",
+      "durationMinutes": 1296,
       "layovers": [
         {
-          "airport": "EWR",
-          "minutes": 54,
+          "airport": "LAX",
+          "minutes": 276,
+          "overnight": false
+        },
+        {
+          "airport": "CPH",
+          "minutes": 50,
           "overnight": false
         }
       ]

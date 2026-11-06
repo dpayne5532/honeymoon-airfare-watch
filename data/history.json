@@ -11,7 +11,7 @@
     "currency": "USD",
     "fare": "Economy"
   },
-  "updatedAt": "2026-11-06T07:03:53Z",
+  "updatedAt": "2026-11-06T21:39:15Z",
   "snapshots": [
     {
       "timestamp": "2026-10-31T18:17:21Z",
@@ -498,13 +498,56 @@
       "priceLevel": "typical",
       "typicalLow": 1400,
       "typicalHigh": 2400
+    },
+    {
+      "timestamp": "2026-11-06T21:39:15Z",
+      "price": 3845,
+      "fareName": "Economy",
+      "fares": [
+        {
+          "name": "Basic Economy",
+          "price": 3365
+        },
+        {
+          "name": "Economy",
+          "price": 3845
+        },
+        {
+          "name": "Economy Fully Refundable",
+          "price": 4345
+        },
+        {
+          "name": "Economy Plus",
+          "price": 5069
+        },
+        {
+          "name": "Economy Plus Fully Refundable",
+          "price": 5569
+        },
+        {
+          "name": "Base Premium Economy",
+          "price": 6345
+        },
+        {
+          "name": "Premium Economy",
+          "price": 6945
+        }
+      ],
+      "match": "exact",
+      "outboundFlight": "UA177",
+      "outboundDeparture": "2027-04-19 17:30",
+      "returnFlight": "UA178",
+      "cheapestRoundTrip": 1756,
+      "priceLevel": "typical",
+      "typicalLow": 1400,
+      "typicalHigh": 2400
     }
   ],
   "googlePriceHistory": [],
   "lastError": null,
   "alternatives": [
     {
-      "price": 1760,
+      "price": 1756,
       "stops": 1,
       "airlines": [
         "Turkish Airlines"

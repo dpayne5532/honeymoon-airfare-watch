@@ -11,7 +11,7 @@
     "currency": "USD",
     "fare": "Economy"
   },
-  "updatedAt": "2026-11-05T16:35:18Z",
+  "updatedAt": "2026-11-06T07:03:53Z",
   "snapshots": [
     {
       "timestamp": "2026-10-31T18:17:21Z",
@@ -455,13 +455,56 @@
       "priceLevel": null,
       "typicalLow": null,
       "typicalHigh": null
+    },
+    {
+      "timestamp": "2026-11-06T07:03:53Z",
+      "price": 3473,
+      "fareName": "Economy",
+      "fares": [
+        {
+          "name": "Basic Economy",
+          "price": 2993
+        },
+        {
+          "name": "Economy",
+          "price": 3473
+        },
+        {
+          "name": "Economy Fully Refundable",
+          "price": 3923
+        },
+        {
+          "name": "Economy Plus",
+          "price": 4697
+        },
+        {
+          "name": "Economy Plus Fully Refundable",
+          "price": 5147
+        },
+        {
+          "name": "Base Premium Economy",
+          "price": 6345
+        },
+        {
+          "name": "Premium Economy",
+          "price": 6945
+        }
+      ],
+      "match": "exact",
+      "outboundFlight": "UA177",
+      "outboundDeparture": "2027-04-19 17:30",
+      "returnFlight": "UA178",
+      "cheapestRoundTrip": 1760,
+      "priceLevel": "typical",
+      "typicalLow": 1400,
+      "typicalHigh": 2400
     }
   ],
   "googlePriceHistory": [],
   "lastError": null,
   "alternatives": [
     {
-      "price": 1759,
+      "price": 1760,
       "stops": 1,
       "airlines": [
         "Turkish Airlines"
@@ -477,6 +520,27 @@
         {
           "airport": "IST",
           "minutes": 230,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 2474,
+      "stops": 1,
+      "airlines": [
+        "Alaska"
+      ],
+      "flights": [
+        "AS 682",
+        "AS 180"
+      ],
+      "departure": "2027-04-19 12:49",
+      "arrival": "2027-04-20 13:15",
+      "durationMinutes": 986,
+      "layovers": [
+        {
+          "airport": "SEA",
+          "minutes": 140,
           "overnight": false
         }
       ]
@@ -545,7 +609,49 @@
       ]
     },
     {
-      "price": 2710,
+      "price": 2694,
+      "stops": 1,
+      "airlines": [
+        "British Airways"
+      ],
+      "flights": [
+        "BA 218",
+        "BA 556"
+      ],
+      "departure": "2027-04-19 18:40",
+      "arrival": "2027-04-20 16:00",
+      "durationMinutes": 800,
+      "layovers": [
+        {
+          "airport": "LHR",
+          "minutes": 105,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 2703,
+      "stops": 1,
+      "airlines": [
+        "Delta"
+      ],
+      "flights": [
+        "DL 1025",
+        "DL 298"
+      ],
+      "departure": "2027-04-19 16:00",
+      "arrival": "2027-04-20 12:40",
+      "durationMinutes": 760,
+      "layovers": [
+        {
+          "airport": "MSP",
+          "minutes": 79,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 2712,
       "stops": 1,
       "airlines": [
         "Lufthansa"
@@ -583,34 +689,6 @@
         {
           "airport": "FRA",
           "minutes": 80,
-          "overnight": false
-        }
-      ]
-    },
-    {
-      "price": 1685,
-      "stops": 2,
-      "airlines": [
-        "Delta",
-        "Scandinavian Airlines"
-      ],
-      "flights": [
-        "DL 3709",
-        "SK 932",
-        "SK 691"
-      ],
-      "departure": "2027-04-19 12:59",
-      "arrival": "2027-04-20 18:35",
-      "durationMinutes": 1296,
-      "layovers": [
-        {
-          "airport": "LAX",
-          "minutes": 276,
-          "overnight": false
-        },
-        {
-          "airport": "CPH",
-          "minutes": 50,
           "overnight": false
         }
       ]

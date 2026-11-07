@@ -11,7 +11,7 @@
     "currency": "USD",
     "fare": "Economy"
   },
-  "updatedAt": "2026-11-06T21:39:15Z",
+  "updatedAt": "2026-11-07T08:58:27Z",
   "snapshots": [
     {
       "timestamp": "2026-10-31T18:17:21Z",
@@ -541,6 +541,49 @@
       "priceLevel": "typical",
       "typicalLow": 1400,
       "typicalHigh": 2400
+    },
+    {
+      "timestamp": "2026-11-07T08:58:27Z",
+      "price": 3845,
+      "fareName": "Economy",
+      "fares": [
+        {
+          "name": "Basic Economy",
+          "price": 3365
+        },
+        {
+          "name": "Economy",
+          "price": 3845
+        },
+        {
+          "name": "Economy Fully Refundable",
+          "price": 4345
+        },
+        {
+          "name": "Economy Plus",
+          "price": 5069
+        },
+        {
+          "name": "Economy Plus Fully Refundable",
+          "price": 5569
+        },
+        {
+          "name": "Base Premium Economy",
+          "price": 6345
+        },
+        {
+          "name": "Premium Economy",
+          "price": 6945
+        }
+      ],
+      "match": "exact",
+      "outboundFlight": "UA177",
+      "outboundDeparture": "2027-04-19 17:30",
+      "returnFlight": "UA178",
+      "cheapestRoundTrip": 1756,
+      "priceLevel": "typical",
+      "typicalLow": 1400,
+      "typicalHigh": 2400
     }
   ],
   "googlePriceHistory": [],
@@ -589,6 +632,27 @@
       ]
     },
     {
+      "price": 2672,
+      "stops": 1,
+      "airlines": [
+        "Icelandair"
+      ],
+      "flights": [
+        "FI 670",
+        "FI 930"
+      ],
+      "departure": "2027-04-19 16:40",
+      "arrival": "2027-04-20 14:35",
+      "durationMinutes": 835,
+      "layovers": [
+        {
+          "airport": "KEF",
+          "minutes": 110,
+          "overnight": false
+        }
+      ]
+    },
+    {
       "price": 2677,
       "stops": 1,
       "airlines": [
@@ -631,6 +695,70 @@
       ]
     },
     {
+      "price": 2679,
+      "stops": 1,
+      "airlines": [
+        "United"
+      ],
+      "flights": [
+        "UA 1812",
+        "UA 507"
+      ],
+      "departure": "2027-04-19 13:25",
+      "arrival": "2027-04-20 13:40",
+      "durationMinutes": 975,
+      "layovers": [
+        {
+          "airport": "SFO",
+          "minutes": 83,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 2683,
+      "stops": 1,
+      "airlines": [
+        "Lufthansa"
+      ],
+      "flights": [
+        "LH 481",
+        "LH 1868"
+      ],
+      "departure": "2027-04-19 16:00",
+      "arrival": "2027-04-20 15:05",
+      "durationMinutes": 905,
+      "layovers": [
+        {
+          "airport": "MUC",
+          "minutes": 235,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 2683,
+      "stops": 1,
+      "airlines": [
+        "United",
+        "Lufthansa City Airlines"
+      ],
+      "flights": [
+        "UA 760",
+        "VL 1870"
+      ],
+      "departure": "2027-04-19 20:25",
+      "arrival": "2027-04-20 18:15",
+      "durationMinutes": 830,
+      "layovers": [
+        {
+          "airport": "MUC",
+          "minutes": 150,
+          "overnight": false
+        }
+      ]
+    },
+    {
       "price": 2686,
       "stops": 1,
       "airlines": [
@@ -668,6 +796,48 @@
         {
           "airport": "LHR",
           "minutes": 105,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 2703,
+      "stops": 1,
+      "airlines": [
+        "American"
+      ],
+      "flights": [
+        "AA 516",
+        "AA 718"
+      ],
+      "departure": "2027-04-19 08:40",
+      "arrival": "2027-04-20 07:05",
+      "durationMinutes": 865,
+      "layovers": [
+        {
+          "airport": "PHL",
+          "minutes": 145,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 2703,
+      "stops": 1,
+      "airlines": [
+        "Delta"
+      ],
+      "flights": [
+        "DL 706",
+        "DL 66"
+      ],
+      "departure": "2027-04-19 13:35",
+      "arrival": "2027-04-20 10:50",
+      "durationMinutes": 795,
+      "layovers": [
+        {
+          "airport": "ATL",
+          "minutes": 42,
           "overnight": false
         }
       ]

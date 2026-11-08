@@ -11,7 +11,7 @@
     "currency": "USD",
     "fare": "Economy"
   },
-  "updatedAt": "2026-11-08T09:14:14Z",
+  "updatedAt": "2026-11-08T22:17:15Z",
   "snapshots": [
     {
       "timestamp": "2026-10-31T18:17:21Z",
@@ -670,13 +670,56 @@
       "priceLevel": "typical",
       "typicalLow": 1400,
       "typicalHigh": 2400
+    },
+    {
+      "timestamp": "2026-11-08T22:17:15Z",
+      "price": 3155,
+      "fareName": "Economy",
+      "fares": [
+        {
+          "name": "Basic Economy",
+          "price": 2675
+        },
+        {
+          "name": "Economy",
+          "price": 3155
+        },
+        {
+          "name": "Economy Fully Refundable",
+          "price": 3555
+        },
+        {
+          "name": "Economy Plus",
+          "price": 4379
+        },
+        {
+          "name": "Economy Plus Fully Refundable",
+          "price": 4779
+        },
+        {
+          "name": "Base Premium Economy",
+          "price": 6345
+        },
+        {
+          "name": "Premium Economy",
+          "price": 6945
+        }
+      ],
+      "match": "exact",
+      "outboundFlight": "UA177",
+      "outboundDeparture": "2027-04-19 17:30",
+      "returnFlight": "UA178",
+      "cheapestRoundTrip": 1756,
+      "priceLevel": "typical",
+      "typicalLow": 1400,
+      "typicalHigh": 2400
     }
   ],
   "googlePriceHistory": [],
   "lastError": null,
   "alternatives": [
     {
-      "price": 1755,
+      "price": 1756,
       "stops": 1,
       "airlines": [
         "Turkish Airlines"
@@ -697,22 +740,64 @@
       ]
     },
     {
-      "price": 2474,
+      "price": 2264,
       "stops": 1,
       "airlines": [
-        "Alaska"
+        "Delta"
       ],
       "flights": [
-        "AS 682",
-        "AS 180"
+        "DL 1025",
+        "DL 298"
       ],
-      "departure": "2027-04-19 12:49",
-      "arrival": "2027-04-20 13:15",
-      "durationMinutes": 986,
+      "departure": "2027-04-19 16:00",
+      "arrival": "2027-04-20 12:40",
+      "durationMinutes": 760,
       "layovers": [
         {
-          "airport": "SEA",
-          "minutes": 140,
+          "airport": "MSP",
+          "minutes": 79,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 2264,
+      "stops": 1,
+      "airlines": [
+        "Delta"
+      ],
+      "flights": [
+        "DL 532",
+        "DL 230"
+      ],
+      "departure": "2027-04-19 12:20",
+      "arrival": "2027-04-20 10:10",
+      "durationMinutes": 830,
+      "layovers": [
+        {
+          "airport": "JFK",
+          "minutes": 68,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 2264,
+      "stops": 1,
+      "airlines": [
+        "Delta"
+      ],
+      "flights": [
+        "DL 706",
+        "DL 66"
+      ],
+      "departure": "2027-04-19 13:35",
+      "arrival": "2027-04-20 10:50",
+      "durationMinutes": 795,
+      "layovers": [
+        {
+          "airport": "ATL",
+          "minutes": 42,
           "overnight": false
         }
       ]
@@ -781,7 +866,7 @@
       ]
     },
     {
-      "price": 2710,
+      "price": 2712,
       "stops": 1,
       "airlines": [
         "Lufthansa"
@@ -797,28 +882,6 @@
         {
           "airport": "FRA",
           "minutes": 65,
-          "overnight": false
-        }
-      ]
-    },
-    {
-      "price": 3164,
-      "stops": 1,
-      "airlines": [
-        "United",
-        "Lufthansa City Airlines"
-      ],
-      "flights": [
-        "UA 760",
-        "VL 1870"
-      ],
-      "departure": "2027-04-19 20:25",
-      "arrival": "2027-04-20 18:15",
-      "durationMinutes": 830,
-      "layovers": [
-        {
-          "airport": "MUC",
-          "minutes": 150,
           "overnight": false
         }
       ]

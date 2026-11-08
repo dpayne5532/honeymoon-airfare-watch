@@ -11,7 +11,7 @@
     "currency": "USD",
     "fare": "Economy"
   },
-  "updatedAt": "2026-11-07T22:04:28Z",
+  "updatedAt": "2026-11-08T09:14:14Z",
   "snapshots": [
     {
       "timestamp": "2026-10-31T18:17:21Z",
@@ -627,6 +627,49 @@
       "priceLevel": "typical",
       "typicalLow": 1400,
       "typicalHigh": 2400
+    },
+    {
+      "timestamp": "2026-11-08T09:14:14Z",
+      "price": 3525,
+      "fareName": "Economy",
+      "fares": [
+        {
+          "name": "Basic Economy",
+          "price": 3045
+        },
+        {
+          "name": "Economy",
+          "price": 3525
+        },
+        {
+          "name": "Economy Fully Refundable",
+          "price": 3975
+        },
+        {
+          "name": "Economy Plus",
+          "price": 4749
+        },
+        {
+          "name": "Economy Plus Fully Refundable",
+          "price": 5199
+        },
+        {
+          "name": "Base Premium Economy",
+          "price": 6345
+        },
+        {
+          "name": "Premium Economy",
+          "price": 6945
+        }
+      ],
+      "match": "exact",
+      "outboundFlight": "UA177",
+      "outboundDeparture": "2027-04-19 17:30",
+      "returnFlight": "UA178",
+      "cheapestRoundTrip": 1755,
+      "priceLevel": "typical",
+      "typicalLow": 1400,
+      "typicalHigh": 2400
     }
   ],
   "googlePriceHistory": [],
@@ -654,43 +697,43 @@
       ]
     },
     {
-      "price": 2264,
+      "price": 2474,
       "stops": 1,
       "airlines": [
-        "Delta"
+        "Alaska"
       ],
       "flights": [
-        "DL 706",
-        "DL 66"
+        "AS 682",
+        "AS 180"
       ],
-      "departure": "2027-04-19 13:35",
-      "arrival": "2027-04-20 10:50",
-      "durationMinutes": 795,
+      "departure": "2027-04-19 12:49",
+      "arrival": "2027-04-20 13:15",
+      "durationMinutes": 986,
       "layovers": [
         {
-          "airport": "ATL",
-          "minutes": 42,
+          "airport": "SEA",
+          "minutes": 140,
           "overnight": false
         }
       ]
     },
     {
-      "price": 2264,
+      "price": 2677,
       "stops": 1,
       "airlines": [
-        "Delta"
+        "Air Canada"
       ],
       "flights": [
-        "DL 1025",
-        "DL 298"
+        "AC 1074",
+        "AC 892"
       ],
-      "departure": "2027-04-19 16:00",
-      "arrival": "2027-04-20 12:40",
-      "durationMinutes": 760,
+      "departure": "2027-04-19 11:25",
+      "arrival": "2027-04-20 09:15",
+      "durationMinutes": 830,
       "layovers": [
         {
-          "airport": "MSP",
-          "minutes": 79,
+          "airport": "YUL",
+          "minutes": 123,
           "overnight": false
         }
       ]
@@ -738,27 +781,6 @@
       ]
     },
     {
-      "price": 2695,
-      "stops": 1,
-      "airlines": [
-        "British Airways"
-      ],
-      "flights": [
-        "BA 218",
-        "BA 556"
-      ],
-      "departure": "2027-04-19 18:40",
-      "arrival": "2027-04-20 16:00",
-      "durationMinutes": 800,
-      "layovers": [
-        {
-          "airport": "LHR",
-          "minutes": 105,
-          "overnight": false
-        }
-      ]
-    },
-    {
       "price": 2710,
       "stops": 1,
       "airlines": [
@@ -775,6 +797,28 @@
         {
           "airport": "FRA",
           "minutes": 65,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 3164,
+      "stops": 1,
+      "airlines": [
+        "United",
+        "Lufthansa City Airlines"
+      ],
+      "flights": [
+        "UA 760",
+        "VL 1870"
+      ],
+      "departure": "2027-04-19 20:25",
+      "arrival": "2027-04-20 18:15",
+      "durationMinutes": 830,
+      "layovers": [
+        {
+          "airport": "MUC",
+          "minutes": 150,
           "overnight": false
         }
       ]

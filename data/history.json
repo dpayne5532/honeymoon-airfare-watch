@@ -11,7 +11,7 @@
     "currency": "USD",
     "fare": "Economy"
   },
-  "updatedAt": "2026-11-09T20:52:48Z",
+  "updatedAt": "2026-11-10T12:48:48Z",
   "snapshots": [
     {
       "timestamp": "2026-10-31T18:17:21Z",
@@ -799,13 +799,48 @@
       "priceLevel": "typical",
       "typicalLow": 1400,
       "typicalHigh": 2400
+    },
+    {
+      "timestamp": "2026-11-10T12:48:48Z",
+      "price": 3154,
+      "fareName": "Economy",
+      "fares": [
+        {
+          "name": "Basic Economy",
+          "price": 2674
+        },
+        {
+          "name": "Economy",
+          "price": 3154
+        },
+        {
+          "name": "Economy Fully Refundable",
+          "price": 3554
+        },
+        {
+          "name": "Economy Plus",
+          "price": 4378
+        },
+        {
+          "name": "Economy Plus Fully Refundable",
+          "price": 4778
+        }
+      ],
+      "match": "exact",
+      "outboundFlight": "UA177",
+      "outboundDeparture": "2027-04-19 17:30",
+      "returnFlight": "UA178",
+      "cheapestRoundTrip": 1760,
+      "priceLevel": "typical",
+      "typicalLow": 1400,
+      "typicalHigh": 2400
     }
   ],
   "googlePriceHistory": [],
   "lastError": null,
   "alternatives": [
     {
-      "price": 1759,
+      "price": 1760,
       "stops": 1,
       "airlines": [
         "Turkish Airlines"
@@ -826,7 +861,7 @@
       ]
     },
     {
-      "price": 2164,
+      "price": 2264,
       "stops": 1,
       "airlines": [
         "Delta"
@@ -847,7 +882,7 @@
       ]
     },
     {
-      "price": 2164,
+      "price": 2264,
       "stops": 1,
       "airlines": [
         "Delta"
@@ -868,7 +903,7 @@
       ]
     },
     {
-      "price": 2164,
+      "price": 2264,
       "stops": 1,
       "airlines": [
         "Delta"
@@ -884,27 +919,6 @@
         {
           "airport": "ATL",
           "minutes": 42,
-          "overnight": false
-        }
-      ]
-    },
-    {
-      "price": 2677,
-      "stops": 1,
-      "airlines": [
-        "Air Canada"
-      ],
-      "flights": [
-        "AC 1074",
-        "AC 892"
-      ],
-      "departure": "2027-04-19 11:25",
-      "arrival": "2027-04-20 09:15",
-      "durationMinutes": 830,
-      "layovers": [
-        {
-          "airport": "YUL",
-          "minutes": 123,
           "overnight": false
         }
       ]
@@ -952,7 +966,7 @@
       ]
     },
     {
-      "price": 2710,
+      "price": 2712,
       "stops": 1,
       "airlines": [
         "Lufthansa"

@@ -11,7 +11,7 @@
     "currency": "USD",
     "fare": "Economy"
   },
-  "updatedAt": "2026-11-11T02:00:11Z",
+  "updatedAt": "2026-11-11T17:57:33Z",
   "snapshots": [
     {
       "timestamp": "2026-10-31T18:17:21Z",
@@ -869,13 +869,48 @@
       "priceLevel": "typical",
       "typicalLow": 1400,
       "typicalHigh": 2400
+    },
+    {
+      "timestamp": "2026-11-11T17:57:33Z",
+      "price": 3154,
+      "fareName": "Economy",
+      "fares": [
+        {
+          "name": "Basic Economy",
+          "price": 2674
+        },
+        {
+          "name": "Economy",
+          "price": 3154
+        },
+        {
+          "name": "Economy Fully Refundable",
+          "price": 3554
+        },
+        {
+          "name": "Economy Plus",
+          "price": 4378
+        },
+        {
+          "name": "Economy Plus Fully Refundable",
+          "price": 4778
+        }
+      ],
+      "match": "exact",
+      "outboundFlight": "UA177",
+      "outboundDeparture": "2027-04-19 17:30",
+      "returnFlight": "UA178",
+      "cheapestRoundTrip": 1754,
+      "priceLevel": "typical",
+      "typicalLow": 1400,
+      "typicalHigh": 2400
     }
   ],
   "googlePriceHistory": [],
   "lastError": null,
   "alternatives": [
     {
-      "price": 1758,
+      "price": 1754,
       "stops": 1,
       "airlines": [
         "Turkish Airlines"
@@ -896,70 +931,49 @@
       ]
     },
     {
-      "price": 2264,
+      "price": 2474,
       "stops": 1,
       "airlines": [
-        "Delta"
+        "Alaska"
       ],
       "flights": [
-        "DL 1025",
-        "DL 298"
+        "AS 682",
+        "AS 180"
       ],
-      "departure": "2027-04-19 16:00",
-      "arrival": "2027-04-20 12:40",
-      "durationMinutes": 760,
+      "departure": "2027-04-19 12:49",
+      "arrival": "2027-04-20 13:15",
+      "durationMinutes": 986,
       "layovers": [
         {
-          "airport": "MSP",
-          "minutes": 79,
+          "airport": "SEA",
+          "minutes": 140,
           "overnight": false
         }
       ]
     },
     {
-      "price": 2264,
+      "price": 2676,
       "stops": 1,
       "airlines": [
-        "Delta"
+        "Air Canada"
       ],
       "flights": [
-        "DL 532",
-        "DL 230"
+        "AC 1074",
+        "AC 892"
       ],
-      "departure": "2027-04-19 12:20",
-      "arrival": "2027-04-20 10:10",
+      "departure": "2027-04-19 11:25",
+      "arrival": "2027-04-20 09:15",
       "durationMinutes": 830,
       "layovers": [
         {
-          "airport": "JFK",
-          "minutes": 68,
+          "airport": "YUL",
+          "minutes": 123,
           "overnight": false
         }
       ]
     },
     {
-      "price": 2264,
-      "stops": 1,
-      "airlines": [
-        "Delta"
-      ],
-      "flights": [
-        "DL 706",
-        "DL 66"
-      ],
-      "departure": "2027-04-19 13:35",
-      "arrival": "2027-04-20 10:50",
-      "durationMinutes": 795,
-      "layovers": [
-        {
-          "airport": "ATL",
-          "minutes": 42,
-          "overnight": false
-        }
-      ]
-    },
-    {
-      "price": 2679,
+      "price": 2678,
       "stops": 1,
       "airlines": [
         "United"
@@ -980,7 +994,49 @@
       ]
     },
     {
-      "price": 2686,
+      "price": 2678,
+      "stops": 1,
+      "airlines": [
+        "United"
+      ],
+      "flights": [
+        "UA 773",
+        "UA 40"
+      ],
+      "departure": "2027-04-19 10:20",
+      "arrival": "2027-04-20 07:35",
+      "durationMinutes": 795,
+      "layovers": [
+        {
+          "airport": "EWR",
+          "minutes": 54,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 2678,
+      "stops": 1,
+      "airlines": [
+        "United"
+      ],
+      "flights": [
+        "UA 1283",
+        "UA 510"
+      ],
+      "departure": "2027-04-19 12:30",
+      "arrival": "2027-04-20 10:55",
+      "durationMinutes": 865,
+      "layovers": [
+        {
+          "airport": "EWR",
+          "minutes": 109,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 2685,
       "stops": 1,
       "airlines": [
         "Air Canada"

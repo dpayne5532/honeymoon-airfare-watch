@@ -11,7 +11,7 @@
     "currency": "USD",
     "fare": "Economy"
   },
-  "updatedAt": "2026-11-11T17:57:33Z",
+  "updatedAt": "2026-11-12T09:58:37Z",
   "snapshots": [
     {
       "timestamp": "2026-10-31T18:17:21Z",
@@ -894,6 +894,45 @@
         {
           "name": "Economy Plus Fully Refundable",
           "price": 4778
+        }
+      ],
+      "match": "exact",
+      "outboundFlight": "UA177",
+      "outboundDeparture": "2027-04-19 17:30",
+      "returnFlight": "UA178",
+      "cheapestRoundTrip": 1754,
+      "priceLevel": "typical",
+      "typicalLow": 1400,
+      "typicalHigh": 2400
+    },
+    {
+      "timestamp": "2026-11-12T09:58:37Z",
+      "price": 3520,
+      "fareName": "Economy",
+      "fares": [
+        {
+          "name": "Basic Economy",
+          "price": 3040
+        },
+        {
+          "name": "Economy",
+          "price": 3520
+        },
+        {
+          "name": "Economy Fully Refundable",
+          "price": 3970
+        },
+        {
+          "name": "Economy Plus",
+          "price": 4744
+        },
+        {
+          "name": "Economy Plus Fully Refundable",
+          "price": 5194
+        },
+        {
+          "name": "Premium Economy",
+          "price": 8428
         }
       ],
       "match": "exact",

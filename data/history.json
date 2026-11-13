@@ -11,7 +11,7 @@
     "currency": "USD",
     "fare": "Economy"
   },
-  "updatedAt": "2026-11-12T09:58:37Z",
+  "updatedAt": "2026-11-13T01:14:15Z",
   "snapshots": [
     {
       "timestamp": "2026-10-31T18:17:21Z",
@@ -943,13 +943,52 @@
       "priceLevel": "typical",
       "typicalLow": 1400,
       "typicalHigh": 2400
+    },
+    {
+      "timestamp": "2026-11-13T01:14:15Z",
+      "price": 3520,
+      "fareName": "Economy",
+      "fares": [
+        {
+          "name": "Basic Economy",
+          "price": 3040
+        },
+        {
+          "name": "Economy",
+          "price": 3520
+        },
+        {
+          "name": "Economy Fully Refundable",
+          "price": 3970
+        },
+        {
+          "name": "Economy Plus",
+          "price": 4744
+        },
+        {
+          "name": "Economy Plus Fully Refundable",
+          "price": 5194
+        },
+        {
+          "name": "Premium Economy",
+          "price": 8428
+        }
+      ],
+      "match": "exact",
+      "outboundFlight": "UA177",
+      "outboundDeparture": "2027-04-19 17:30",
+      "returnFlight": "UA178",
+      "cheapestRoundTrip": 1801,
+      "priceLevel": "typical",
+      "typicalLow": 1400,
+      "typicalHigh": 2400
     }
   ],
   "googlePriceHistory": [],
   "lastError": null,
   "alternatives": [
     {
-      "price": 1754,
+      "price": 1801,
       "stops": 1,
       "airlines": [
         "Turkish Airlines"
@@ -1112,6 +1151,35 @@
         {
           "airport": "FRA",
           "minutes": 65,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 2226,
+      "stops": 2,
+      "airlines": [
+        "Alaska",
+        "Condor",
+        "Lufthansa"
+      ],
+      "flights": [
+        "AS 512",
+        "DE 2033",
+        "LH 236"
+      ],
+      "departure": "2027-04-19 09:00",
+      "arrival": "2027-04-20 17:50",
+      "durationMinutes": 1490,
+      "layovers": [
+        {
+          "airport": "SEA",
+          "minutes": 402,
+          "overnight": false
+        },
+        {
+          "airport": "FRA",
+          "minutes": 190,
           "overnight": false
         }
       ]

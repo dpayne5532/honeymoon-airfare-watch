@@ -11,7 +11,7 @@
     "currency": "USD",
     "fare": "Economy"
   },
-  "updatedAt": "2026-11-13T01:14:15Z",
+  "updatedAt": "2026-11-13T17:54:52Z",
   "snapshots": [
     {
       "timestamp": "2026-10-31T18:17:21Z",
@@ -982,6 +982,49 @@
       "priceLevel": "typical",
       "typicalLow": 1400,
       "typicalHigh": 2400
+    },
+    {
+      "timestamp": "2026-11-13T17:54:52Z",
+      "price": 3522,
+      "fareName": "Economy",
+      "fares": [
+        {
+          "name": "Basic Economy",
+          "price": 3042
+        },
+        {
+          "name": "Economy",
+          "price": 3522
+        },
+        {
+          "name": "Economy Fully Refundable",
+          "price": 3972
+        },
+        {
+          "name": "Economy Plus",
+          "price": 4746
+        },
+        {
+          "name": "Economy Plus Fully Refundable",
+          "price": 5196
+        },
+        {
+          "name": "Base Premium Economy",
+          "price": 6344
+        },
+        {
+          "name": "Premium Economy",
+          "price": 6944
+        }
+      ],
+      "match": "exact",
+      "outboundFlight": "UA177",
+      "outboundDeparture": "2027-04-19 17:30",
+      "returnFlight": "UA178",
+      "cheapestRoundTrip": 1801,
+      "priceLevel": "typical",
+      "typicalLow": 1400,
+      "typicalHigh": 2400
     }
   ],
   "googlePriceHistory": [],
@@ -1135,6 +1178,28 @@
       ]
     },
     {
+      "price": 2687,
+      "stops": 1,
+      "airlines": [
+        "United",
+        "Lufthansa City Airlines"
+      ],
+      "flights": [
+        "UA 760",
+        "VL 1870"
+      ],
+      "departure": "2027-04-19 20:25",
+      "arrival": "2027-04-20 18:15",
+      "durationMinutes": 830,
+      "layovers": [
+        {
+          "airport": "MUC",
+          "minutes": 150,
+          "overnight": false
+        }
+      ]
+    },
+    {
       "price": 2712,
       "stops": 1,
       "airlines": [
@@ -1156,7 +1221,7 @@
       ]
     },
     {
-      "price": 2226,
+      "price": 2152,
       "stops": 2,
       "airlines": [
         "Alaska",

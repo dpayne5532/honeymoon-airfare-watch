@@ -11,7 +11,7 @@
     "currency": "USD",
     "fare": "Economy"
   },
-  "updatedAt": "2026-11-13T17:54:52Z",
+  "updatedAt": "2026-11-14T06:47:19Z",
   "snapshots": [
     {
       "timestamp": "2026-10-31T18:17:21Z",
@@ -1025,6 +1025,49 @@
       "priceLevel": "typical",
       "typicalLow": 1400,
       "typicalHigh": 2400
+    },
+    {
+      "timestamp": "2026-11-14T06:47:19Z",
+      "price": 3521,
+      "fareName": "Economy",
+      "fares": [
+        {
+          "name": "Basic Economy",
+          "price": 3041
+        },
+        {
+          "name": "Economy",
+          "price": 3521
+        },
+        {
+          "name": "Economy Fully Refundable",
+          "price": 3971
+        },
+        {
+          "name": "Economy Plus",
+          "price": 4745
+        },
+        {
+          "name": "Economy Plus Fully Refundable",
+          "price": 5195
+        },
+        {
+          "name": "Base Premium Economy",
+          "price": 6343
+        },
+        {
+          "name": "Premium Economy",
+          "price": 6943
+        }
+      ],
+      "match": "exact",
+      "outboundFlight": "UA177",
+      "outboundDeparture": "2027-04-19 17:30",
+      "returnFlight": "UA178",
+      "cheapestRoundTrip": 1801,
+      "priceLevel": "typical",
+      "typicalLow": 1400,
+      "typicalHigh": 2400
     }
   ],
   "googlePriceHistory": [],
@@ -1173,28 +1216,6 @@
         {
           "airport": "YYZ",
           "minutes": 62,
-          "overnight": false
-        }
-      ]
-    },
-    {
-      "price": 2687,
-      "stops": 1,
-      "airlines": [
-        "United",
-        "Lufthansa City Airlines"
-      ],
-      "flights": [
-        "UA 760",
-        "VL 1870"
-      ],
-      "departure": "2027-04-19 20:25",
-      "arrival": "2027-04-20 18:15",
-      "durationMinutes": 830,
-      "layovers": [
-        {
-          "airport": "MUC",
-          "minutes": 150,
           "overnight": false
         }
       ]

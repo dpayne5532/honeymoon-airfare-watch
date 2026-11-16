@@ -11,7 +11,7 @@
     "currency": "USD",
     "fare": "Economy"
   },
-  "updatedAt": "2026-11-15T23:00:25Z",
+  "updatedAt": "2026-11-16T18:42:15Z",
   "snapshots": [
     {
       "timestamp": "2026-10-31T18:17:21Z",
@@ -1158,7 +1158,7 @@
   ],
   "googlePriceHistory": [],
   "lastError": {
-    "timestamp": "2026-11-15T23:00:25Z",
+    "timestamp": "2026-11-16T18:42:15Z",
     "message": "SerpApi: Google Flights hasn't returned any results for this query."
   },
   "alternatives": [

@@ -11,7 +11,7 @@
     "currency": "USD",
     "fare": "Economy"
   },
-  "updatedAt": "2026-11-17T13:40:04Z",
+  "updatedAt": "2026-11-18T07:44:34Z",
   "snapshots": [
     {
       "timestamp": "2026-10-31T18:17:21Z",
@@ -1154,16 +1154,48 @@
       "priceLevel": "typical",
       "typicalLow": 1400,
       "typicalHigh": 2400
+    },
+    {
+      "timestamp": "2026-11-18T07:44:34Z",
+      "price": 3153,
+      "fareName": "Economy",
+      "fares": [
+        {
+          "name": "Basic Economy",
+          "price": 2673
+        },
+        {
+          "name": "Economy",
+          "price": 3153
+        },
+        {
+          "name": "Economy Fully Refundable",
+          "price": 3553
+        },
+        {
+          "name": "Economy Plus",
+          "price": 4377
+        },
+        {
+          "name": "Economy Plus Fully Refundable",
+          "price": 4777
+        }
+      ],
+      "match": "exact",
+      "outboundFlight": "UA177",
+      "outboundDeparture": "2027-04-19 17:30",
+      "returnFlight": "UA178",
+      "cheapestRoundTrip": 1863,
+      "priceLevel": "typical",
+      "typicalLow": 1400,
+      "typicalHigh": 2400
     }
   ],
   "googlePriceHistory": [],
-  "lastError": {
-    "timestamp": "2026-11-17T13:40:04Z",
-    "message": "SerpApi: Google Flights hasn't returned any results for this query."
-  },
+  "lastError": null,
   "alternatives": [
     {
-      "price": 1800,
+      "price": 1863,
       "stops": 1,
       "airlines": [
         "Turkish Airlines"
@@ -1184,7 +1216,7 @@
       ]
     },
     {
-      "price": 2473,
+      "price": 2472,
       "stops": 1,
       "airlines": [
         "Alaska"
@@ -1205,7 +1237,28 @@
       ]
     },
     {
-      "price": 2677,
+      "price": 2673,
+      "stops": 1,
+      "airlines": [
+        "Air Canada"
+      ],
+      "flights": [
+        "AC 1074",
+        "AC 892"
+      ],
+      "departure": "2027-04-19 11:25",
+      "arrival": "2027-04-20 09:15",
+      "durationMinutes": 830,
+      "layovers": [
+        {
+          "airport": "YUL",
+          "minutes": 123,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 2676,
       "stops": 1,
       "airlines": [
         "United"
@@ -1226,7 +1279,7 @@
       ]
     },
     {
-      "price": 2677,
+      "price": 2676,
       "stops": 1,
       "airlines": [
         "United"
@@ -1247,28 +1300,7 @@
       ]
     },
     {
-      "price": 2677,
-      "stops": 1,
-      "airlines": [
-        "United"
-      ],
-      "flights": [
-        "UA 1283",
-        "UA 510"
-      ],
-      "departure": "2027-04-19 12:35",
-      "arrival": "2027-04-20 10:55",
-      "durationMinutes": 860,
-      "layovers": [
-        {
-          "airport": "EWR",
-          "minutes": 96,
-          "overnight": false
-        }
-      ]
-    },
-    {
-      "price": 2684,
+      "price": 2683,
       "stops": 1,
       "airlines": [
         "Air Canada"
@@ -1289,7 +1321,29 @@
       ]
     },
     {
-      "price": 2693,
+      "price": 2684,
+      "stops": 1,
+      "airlines": [
+        "United",
+        "Lufthansa City Airlines"
+      ],
+      "flights": [
+        "UA 760",
+        "VL 1870"
+      ],
+      "departure": "2027-04-19 20:25",
+      "arrival": "2027-04-20 18:15",
+      "durationMinutes": 830,
+      "layovers": [
+        {
+          "airport": "MUC",
+          "minutes": 150,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 2692,
       "stops": 1,
       "airlines": [
         "British Airways"
@@ -1310,7 +1364,112 @@
       ]
     },
     {
-      "price": 2716,
+      "price": 2702,
+      "stops": 1,
+      "airlines": [
+        "American"
+      ],
+      "flights": [
+        "AA 516",
+        "AA 718"
+      ],
+      "departure": "2027-04-19 08:40",
+      "arrival": "2027-04-20 07:05",
+      "durationMinutes": 865,
+      "layovers": [
+        {
+          "airport": "PHL",
+          "minutes": 145,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 2702,
+      "stops": 1,
+      "airlines": [
+        "American"
+      ],
+      "flights": [
+        "AA 2359",
+        "AA 240"
+      ],
+      "departure": "2027-04-19 10:28",
+      "arrival": "2027-04-20 09:50",
+      "durationMinutes": 922,
+      "layovers": [
+        {
+          "airport": "DFW",
+          "minutes": 175,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 2702,
+      "stops": 1,
+      "airlines": [
+        "Delta"
+      ],
+      "flights": [
+        "DL 532",
+        "DL 230"
+      ],
+      "departure": "2027-04-19 12:20",
+      "arrival": "2027-04-20 10:10",
+      "durationMinutes": 830,
+      "layovers": [
+        {
+          "airport": "JFK",
+          "minutes": 68,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 2702,
+      "stops": 1,
+      "airlines": [
+        "American"
+      ],
+      "flights": [
+        "AA 2276",
+        "AA 110"
+      ],
+      "departure": "2027-04-19 12:24",
+      "arrival": "2027-04-20 10:20",
+      "durationMinutes": 836,
+      "layovers": [
+        {
+          "airport": "ORD",
+          "minutes": 130,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 2702,
+      "stops": 1,
+      "airlines": [
+        "Delta"
+      ],
+      "flights": [
+        "DL 706",
+        "DL 66"
+      ],
+      "departure": "2027-04-19 13:35",
+      "arrival": "2027-04-20 10:50",
+      "durationMinutes": 795,
+      "layovers": [
+        {
+          "airport": "ATL",
+          "minutes": 42,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 2715,
       "stops": 1,
       "airlines": [
         "Lufthansa"
@@ -1331,7 +1490,7 @@
       ]
     },
     {
-      "price": 2152,
+      "price": 2150,
       "stops": 2,
       "airlines": [
         "Alaska",

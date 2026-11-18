@@ -11,7 +11,7 @@
     "currency": "USD",
     "fare": "Economy"
   },
-  "updatedAt": "2026-11-18T07:44:34Z",
+  "updatedAt": "2026-11-18T17:23:23Z",
   "snapshots": [
     {
       "timestamp": "2026-10-31T18:17:21Z",
@@ -1189,6 +1189,45 @@
       "priceLevel": "typical",
       "typicalLow": 1400,
       "typicalHigh": 2400
+    },
+    {
+      "timestamp": "2026-11-18T17:23:23Z",
+      "price": 3525,
+      "fareName": "Economy",
+      "fares": [
+        {
+          "name": "Basic Economy",
+          "price": 3045
+        },
+        {
+          "name": "Economy",
+          "price": 3525
+        },
+        {
+          "name": "Economy Fully Refundable",
+          "price": 3975
+        },
+        {
+          "name": "Economy Plus",
+          "price": 4749
+        },
+        {
+          "name": "Economy Plus Fully Refundable",
+          "price": 5199
+        },
+        {
+          "name": "Premium Economy",
+          "price": 8483
+        }
+      ],
+      "match": "exact",
+      "outboundFlight": "UA177",
+      "outboundDeparture": "2027-04-19 17:30",
+      "returnFlight": "UA178",
+      "cheapestRoundTrip": 1863,
+      "priceLevel": "typical",
+      "typicalLow": 1400,
+      "typicalHigh": 2400
     }
   ],
   "googlePriceHistory": [],
@@ -1490,7 +1529,7 @@
       ]
     },
     {
-      "price": 2150,
+      "price": 2122,
       "stops": 2,
       "airlines": [
         "Alaska",

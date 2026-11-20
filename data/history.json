@@ -11,7 +11,7 @@
     "currency": "USD",
     "fare": "Economy"
   },
-  "updatedAt": "2026-11-19T20:49:49Z",
+  "updatedAt": "2026-11-20T13:16:13Z",
   "snapshots": [
     {
       "timestamp": "2026-10-31T18:17:21Z",
@@ -1267,6 +1267,45 @@
       "priceLevel": "typical",
       "typicalLow": 1400,
       "typicalHigh": 2400
+    },
+    {
+      "timestamp": "2026-11-20T13:16:13Z",
+      "price": 3524,
+      "fareName": "Economy",
+      "fares": [
+        {
+          "name": "Basic Economy",
+          "price": 3044
+        },
+        {
+          "name": "Economy",
+          "price": 3524
+        },
+        {
+          "name": "Economy Fully Refundable",
+          "price": 3974
+        },
+        {
+          "name": "Economy Plus",
+          "price": 4748
+        },
+        {
+          "name": "Economy Plus Fully Refundable",
+          "price": 5198
+        },
+        {
+          "name": "Premium Economy",
+          "price": 8428
+        }
+      ],
+      "match": "exact",
+      "outboundFlight": "UA177",
+      "outboundDeparture": "2027-04-19 17:30",
+      "returnFlight": "UA178",
+      "cheapestRoundTrip": 1863,
+      "priceLevel": "typical",
+      "typicalLow": 1400,
+      "typicalHigh": 2400
     }
   ],
   "googlePriceHistory": [],
@@ -1315,48 +1354,6 @@
       ]
     },
     {
-      "price": 2673,
-      "stops": 1,
-      "airlines": [
-        "Air Canada"
-      ],
-      "flights": [
-        "AC 1074",
-        "AC 892"
-      ],
-      "departure": "2027-04-19 11:25",
-      "arrival": "2027-04-20 09:15",
-      "durationMinutes": 830,
-      "layovers": [
-        {
-          "airport": "YUL",
-          "minutes": 123,
-          "overnight": false
-        }
-      ]
-    },
-    {
-      "price": 2676,
-      "stops": 1,
-      "airlines": [
-        "United"
-      ],
-      "flights": [
-        "UA 773",
-        "UA 40"
-      ],
-      "departure": "2027-04-19 10:20",
-      "arrival": "2027-04-20 07:35",
-      "durationMinutes": 795,
-      "layovers": [
-        {
-          "airport": "EWR",
-          "minutes": 54,
-          "overnight": false
-        }
-      ]
-    },
-    {
       "price": 2676,
       "stops": 1,
       "airlines": [
@@ -1372,13 +1369,13 @@
       "layovers": [
         {
           "airport": "ORD",
-          "minutes": 48,
+          "minutes": 47,
           "overnight": false
         }
       ]
     },
     {
-      "price": 2683,
+      "price": 2682,
       "stops": 1,
       "airlines": [
         "Air Canada"
@@ -1420,7 +1417,7 @@
       ]
     },
     {
-      "price": 2715,
+      "price": 2704,
       "stops": 1,
       "airlines": [
         "Lufthansa"
@@ -1436,6 +1433,28 @@
         {
           "airport": "FRA",
           "minutes": 65,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 3163,
+      "stops": 1,
+      "airlines": [
+        "United",
+        "Lufthansa City Airlines"
+      ],
+      "flights": [
+        "UA 760",
+        "VL 1870"
+      ],
+      "departure": "2027-04-19 20:30",
+      "arrival": "2027-04-20 18:15",
+      "durationMinutes": 825,
+      "layovers": [
+        {
+          "airport": "MUC",
+          "minutes": 145,
           "overnight": false
         }
       ]

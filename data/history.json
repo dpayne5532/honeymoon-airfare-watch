@@ -11,7 +11,7 @@
     "currency": "USD",
     "fare": "Economy"
   },
-  "updatedAt": "2026-11-22T02:23:00Z",
+  "updatedAt": "2026-11-22T17:55:35Z",
   "snapshots": [
     {
       "timestamp": "2026-10-31T18:17:21Z",
@@ -1423,6 +1423,45 @@
       "priceLevel": "typical",
       "typicalLow": 1400,
       "typicalHigh": 2400
+    },
+    {
+      "timestamp": "2026-11-22T17:55:35Z",
+      "price": 3522,
+      "fareName": "Economy",
+      "fares": [
+        {
+          "name": "Basic Economy",
+          "price": 3042
+        },
+        {
+          "name": "Economy",
+          "price": 3522
+        },
+        {
+          "name": "Economy Fully Refundable",
+          "price": 3972
+        },
+        {
+          "name": "Economy Plus",
+          "price": 4746
+        },
+        {
+          "name": "Economy Plus Fully Refundable",
+          "price": 5196
+        },
+        {
+          "name": "Premium Economy",
+          "price": 8428
+        }
+      ],
+      "match": "exact",
+      "outboundFlight": "UA177",
+      "outboundDeparture": "2027-04-19 17:30",
+      "returnFlight": "UA178",
+      "cheapestRoundTrip": 1863,
+      "priceLevel": "typical",
+      "typicalLow": 1400,
+      "typicalHigh": 2400
     }
   ],
   "googlePriceHistory": [],
@@ -1459,13 +1498,13 @@
         "AS 682",
         "AS 180"
       ],
-      "departure": "2027-04-19 12:49",
+      "departure": "2027-04-19 12:00",
       "arrival": "2027-04-20 13:15",
-      "durationMinutes": 986,
+      "durationMinutes": 1035,
       "layovers": [
         {
           "airport": "SEA",
-          "minutes": 140,
+          "minutes": 183,
           "overnight": false
         }
       ]
@@ -1507,28 +1546,7 @@
       "layovers": [
         {
           "airport": "YYZ",
-          "minutes": 62,
-          "overnight": false
-        }
-      ]
-    },
-    {
-      "price": 2688,
-      "stops": 1,
-      "airlines": [
-        "United"
-      ],
-      "flights": [
-        "UA 2381",
-        "UA 40"
-      ],
-      "departure": "2027-04-19 09:35",
-      "arrival": "2027-04-20 07:35",
-      "durationMinutes": 840,
-      "layovers": [
-        {
-          "airport": "EWR",
-          "minutes": 104,
+          "minutes": 68,
           "overnight": false
         }
       ]
@@ -1555,28 +1573,7 @@
       ]
     },
     {
-      "price": 2702,
-      "stops": 1,
-      "airlines": [
-        "American"
-      ],
-      "flights": [
-        "AA 2276",
-        "AA 110"
-      ],
-      "departure": "2027-04-19 12:24",
-      "arrival": "2027-04-20 10:20",
-      "durationMinutes": 836,
-      "layovers": [
-        {
-          "airport": "ORD",
-          "minutes": 130,
-          "overnight": false
-        }
-      ]
-    },
-    {
-      "price": 2715,
+      "price": 2704,
       "stops": 1,
       "airlines": [
         "Lufthansa"
@@ -1597,6 +1594,28 @@
       ]
     },
     {
+      "price": 3163,
+      "stops": 1,
+      "airlines": [
+        "United",
+        "Lufthansa City Airlines"
+      ],
+      "flights": [
+        "UA 760",
+        "VL 1870"
+      ],
+      "departure": "2027-04-19 20:30",
+      "arrival": "2027-04-20 18:15",
+      "durationMinutes": 825,
+      "layovers": [
+        {
+          "airport": "MUC",
+          "minutes": 145,
+          "overnight": false
+        }
+      ]
+    },
+    {
       "price": 2230,
       "stops": 2,
       "airlines": [
@@ -1609,13 +1628,13 @@
         "DE 2033",
         "LH 236"
       ],
-      "departure": "2027-04-19 12:49",
+      "departure": "2027-04-19 12:00",
       "arrival": "2027-04-20 17:50",
-      "durationMinutes": 1261,
+      "durationMinutes": 1310,
       "layovers": [
         {
           "airport": "SEA",
-          "minutes": 175,
+          "minutes": 218,
           "overnight": false
         },
         {

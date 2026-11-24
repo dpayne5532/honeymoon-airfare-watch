@@ -11,7 +11,7 @@
     "currency": "USD",
     "fare": "Economy"
   },
-  "updatedAt": "2026-11-23T20:23:28Z",
+  "updatedAt": "2026-11-24T06:10:32Z",
   "snapshots": [
     {
       "timestamp": "2026-10-31T18:17:21Z",
@@ -1540,6 +1540,45 @@
       "priceLevel": "typical",
       "typicalLow": 1400,
       "typicalHigh": 2400
+    },
+    {
+      "timestamp": "2026-11-24T06:10:32Z",
+      "price": 3520,
+      "fareName": "Economy",
+      "fares": [
+        {
+          "name": "Basic Economy",
+          "price": 3040
+        },
+        {
+          "name": "Economy",
+          "price": 3520
+        },
+        {
+          "name": "Economy Fully Refundable",
+          "price": 3970
+        },
+        {
+          "name": "Economy Plus",
+          "price": 4744
+        },
+        {
+          "name": "Economy Plus Fully Refundable",
+          "price": 5194
+        },
+        {
+          "name": "Premium Economy",
+          "price": 8432
+        }
+      ],
+      "match": "exact",
+      "outboundFlight": "UA177",
+      "outboundDeparture": "2027-04-19 17:30",
+      "returnFlight": "UA178",
+      "cheapestRoundTrip": 1863,
+      "priceLevel": "typical",
+      "typicalLow": 1400,
+      "typicalHigh": 2400
     }
   ],
   "googlePriceHistory": [],
@@ -1588,7 +1627,7 @@
       ]
     },
     {
-      "price": 2676,
+      "price": 2675,
       "stops": 1,
       "airlines": [
         "United"
@@ -1630,22 +1669,22 @@
       ]
     },
     {
-      "price": 2688,
+      "price": 2691,
       "stops": 1,
       "airlines": [
-        "United"
+        "British Airways"
       ],
       "flights": [
-        "UA 2381",
-        "UA 40"
+        "BA 218",
+        "BA 556"
       ],
-      "departure": "2027-04-19 09:35",
-      "arrival": "2027-04-20 07:35",
-      "durationMinutes": 840,
+      "departure": "2027-04-19 18:40",
+      "arrival": "2027-04-20 16:00",
+      "durationMinutes": 800,
       "layovers": [
         {
-          "airport": "EWR",
-          "minutes": 104,
+          "airport": "LHR",
+          "minutes": 105,
           "overnight": false
         }
       ]
@@ -1689,34 +1728,6 @@
         {
           "airport": "MUC",
           "minutes": 145,
-          "overnight": false
-        }
-      ]
-    },
-    {
-      "price": 1913,
-      "stops": 2,
-      "airlines": [
-        "Delta",
-        "Scandinavian Airlines"
-      ],
-      "flights": [
-        "DL 3709",
-        "SK 932",
-        "SK 691"
-      ],
-      "departure": "2027-04-19 12:59",
-      "arrival": "2027-04-20 18:35",
-      "durationMinutes": 1296,
-      "layovers": [
-        {
-          "airport": "LAX",
-          "minutes": 276,
-          "overnight": false
-        },
-        {
-          "airport": "CPH",
-          "minutes": 50,
           "overnight": false
         }
       ]

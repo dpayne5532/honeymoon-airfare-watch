@@ -11,7 +11,7 @@
     "currency": "USD",
     "fare": "Economy"
   },
-  "updatedAt": "2026-11-24T06:10:32Z",
+  "updatedAt": "2026-11-24T17:58:42Z",
   "snapshots": [
     {
       "timestamp": "2026-10-31T18:17:21Z",
@@ -1579,6 +1579,45 @@
       "priceLevel": "typical",
       "typicalLow": 1400,
       "typicalHigh": 2400
+    },
+    {
+      "timestamp": "2026-11-24T17:58:42Z",
+      "price": 3520,
+      "fareName": "Economy",
+      "fares": [
+        {
+          "name": "Basic Economy",
+          "price": 3040
+        },
+        {
+          "name": "Economy",
+          "price": 3520
+        },
+        {
+          "name": "Economy Fully Refundable",
+          "price": 3970
+        },
+        {
+          "name": "Economy Plus",
+          "price": 4744
+        },
+        {
+          "name": "Economy Plus Fully Refundable",
+          "price": 5194
+        },
+        {
+          "name": "Premium Economy",
+          "price": 8432
+        }
+      ],
+      "match": "exact",
+      "outboundFlight": "UA177",
+      "outboundDeparture": "2027-04-19 17:30",
+      "returnFlight": "UA178",
+      "cheapestRoundTrip": 1863,
+      "priceLevel": "typical",
+      "typicalLow": 1400,
+      "typicalHigh": 2400
     }
   ],
   "googlePriceHistory": [],
@@ -1627,7 +1666,7 @@
       ]
     },
     {
-      "price": 2675,
+      "price": 2676,
       "stops": 1,
       "airlines": [
         "United"
@@ -1669,7 +1708,28 @@
       ]
     },
     {
-      "price": 2691,
+      "price": 2688,
+      "stops": 1,
+      "airlines": [
+        "United"
+      ],
+      "flights": [
+        "UA 2381",
+        "UA 40"
+      ],
+      "departure": "2027-04-19 09:35",
+      "arrival": "2027-04-20 07:35",
+      "durationMinutes": 840,
+      "layovers": [
+        {
+          "airport": "EWR",
+          "minutes": 104,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 2692,
       "stops": 1,
       "airlines": [
         "British Airways"
@@ -1690,7 +1750,28 @@
       ]
     },
     {
-      "price": 2704,
+      "price": 2702,
+      "stops": 1,
+      "airlines": [
+        "Delta"
+      ],
+      "flights": [
+        "DL 706",
+        "DL 66"
+      ],
+      "departure": "2027-04-19 13:35",
+      "arrival": "2027-04-20 10:50",
+      "durationMinutes": 795,
+      "layovers": [
+        {
+          "airport": "ATL",
+          "minutes": 42,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 2715,
       "stops": 1,
       "airlines": [
         "Lufthansa"
@@ -1711,29 +1792,7 @@
       ]
     },
     {
-      "price": 3163,
-      "stops": 1,
-      "airlines": [
-        "United",
-        "Lufthansa City Airlines"
-      ],
-      "flights": [
-        "UA 760",
-        "VL 1870"
-      ],
-      "departure": "2027-04-19 20:30",
-      "arrival": "2027-04-20 18:15",
-      "durationMinutes": 825,
-      "layovers": [
-        {
-          "airport": "MUC",
-          "minutes": 145,
-          "overnight": false
-        }
-      ]
-    },
-    {
-      "price": 2232,
+      "price": 2226,
       "stops": 2,
       "airlines": [
         "Alaska",

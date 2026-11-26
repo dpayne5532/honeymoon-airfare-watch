@@ -11,7 +11,7 @@
     "currency": "USD",
     "fare": "Economy"
   },
-  "updatedAt": "2026-11-26T00:33:12Z",
+  "updatedAt": "2026-11-26T11:09:13Z",
   "snapshots": [
     {
       "timestamp": "2026-10-31T18:17:21Z",
@@ -1692,6 +1692,41 @@
       "priceLevel": "typical",
       "typicalLow": 1400,
       "typicalHigh": 2400
+    },
+    {
+      "timestamp": "2026-11-26T11:09:13Z",
+      "price": 3118,
+      "fareName": "Economy",
+      "fares": [
+        {
+          "name": "Basic Economy",
+          "price": 2638
+        },
+        {
+          "name": "Economy",
+          "price": 3118
+        },
+        {
+          "name": "Economy Fully Refundable",
+          "price": 3568
+        },
+        {
+          "name": "Economy Plus",
+          "price": 4342
+        },
+        {
+          "name": "Economy Plus Fully Refundable",
+          "price": 4792
+        }
+      ],
+      "match": "exact",
+      "outboundFlight": "UA177",
+      "outboundDeparture": "2027-04-19 17:30",
+      "returnFlight": "UA178",
+      "cheapestRoundTrip": 1863,
+      "priceLevel": "typical",
+      "typicalLow": 1400,
+      "typicalHigh": 2400
     }
   ],
   "googlePriceHistory": [],
@@ -1719,22 +1754,22 @@
       ]
     },
     {
-      "price": 1925,
+      "price": 1923,
       "stops": 1,
       "airlines": [
-        "United"
+        "Air Canada"
       ],
       "flights": [
-        "UA 2640",
-        "UA 40"
+        "AC 1074",
+        "AC 892"
       ],
-      "departure": "2027-04-19 07:40",
-      "arrival": "2027-04-20 07:35",
-      "durationMinutes": 955,
+      "departure": "2027-04-19 11:25",
+      "arrival": "2027-04-20 09:15",
+      "durationMinutes": 830,
       "layovers": [
         {
-          "airport": "EWR",
-          "minutes": 219,
+          "airport": "YUL",
+          "minutes": 138,
           "overnight": false
         }
       ]
@@ -1761,6 +1796,27 @@
       ]
     },
     {
+      "price": 1934,
+      "stops": 1,
+      "airlines": [
+        "Lufthansa"
+      ],
+      "flights": [
+        "LH 481",
+        "LH 1868"
+      ],
+      "departure": "2027-04-19 16:00",
+      "arrival": "2027-04-20 15:05",
+      "durationMinutes": 905,
+      "layovers": [
+        {
+          "airport": "MUC",
+          "minutes": 235,
+          "overnight": false
+        }
+      ]
+    },
+    {
       "price": 1941,
       "stops": 1,
       "airlines": [
@@ -1777,6 +1833,27 @@
         {
           "airport": "LHR",
           "minutes": 105,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 1951,
+      "stops": 1,
+      "airlines": [
+        "American"
+      ],
+      "flights": [
+        "AA 516",
+        "AA 718"
+      ],
+      "departure": "2027-04-19 08:40",
+      "arrival": "2027-04-20 07:05",
+      "durationMinutes": 865,
+      "layovers": [
+        {
+          "airport": "PHL",
+          "minutes": 145,
           "overnight": false
         }
       ]
@@ -1840,55 +1917,6 @@
         {
           "airport": "FRA",
           "minutes": 65,
-          "overnight": false
-        }
-      ]
-    },
-    {
-      "price": 3155,
-      "stops": 1,
-      "airlines": [
-        "United"
-      ],
-      "flights": [
-        "UA 2865",
-        "UA 970"
-      ],
-      "departure": "2027-04-19 11:15",
-      "arrival": "2027-04-20 07:55",
-      "durationMinutes": 760,
-      "layovers": [
-        {
-          "airport": "ORD",
-          "minutes": 47,
-          "overnight": false
-        }
-      ]
-    },
-    {
-      "price": 1912,
-      "stops": 2,
-      "airlines": [
-        "Delta",
-        "Scandinavian Airlines"
-      ],
-      "flights": [
-        "DL 3709",
-        "SK 932",
-        "SK 691"
-      ],
-      "departure": "2027-04-19 12:59",
-      "arrival": "2027-04-20 18:35",
-      "durationMinutes": 1296,
-      "layovers": [
-        {
-          "airport": "LAX",
-          "minutes": 276,
-          "overnight": false
-        },
-        {
-          "airport": "CPH",
-          "minutes": 50,
           "overnight": false
         }
       ]

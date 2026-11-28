@@ -11,7 +11,7 @@
     "currency": "USD",
     "fare": "Economy"
   },
-  "updatedAt": "2026-11-27T14:06:22Z",
+  "updatedAt": "2026-11-28T08:08:23Z",
   "snapshots": [
     {
       "timestamp": "2026-10-31T18:17:21Z",
@@ -1797,6 +1797,41 @@
       "priceLevel": "typical",
       "typicalLow": 1400,
       "typicalHigh": 2400
+    },
+    {
+      "timestamp": "2026-11-28T08:08:23Z",
+      "price": 3120,
+      "fareName": "Economy",
+      "fares": [
+        {
+          "name": "Basic Economy",
+          "price": 2640
+        },
+        {
+          "name": "Economy",
+          "price": 3120
+        },
+        {
+          "name": "Economy Fully Refundable",
+          "price": 3570
+        },
+        {
+          "name": "Economy Plus",
+          "price": 4344
+        },
+        {
+          "name": "Economy Plus Fully Refundable",
+          "price": 4794
+        }
+      ],
+      "match": "exact",
+      "outboundFlight": "UA177",
+      "outboundDeparture": "2027-04-19 17:30",
+      "returnFlight": "UA178",
+      "cheapestRoundTrip": 1863,
+      "priceLevel": "typical",
+      "typicalLow": 1400,
+      "typicalHigh": 2400
     }
   ],
   "googlePriceHistory": [],
@@ -1845,6 +1880,27 @@
       ]
     },
     {
+      "price": 1926,
+      "stops": 1,
+      "airlines": [
+        "United"
+      ],
+      "flights": [
+        "UA 2865",
+        "UA 970"
+      ],
+      "departure": "2027-04-19 11:15",
+      "arrival": "2027-04-20 07:55",
+      "durationMinutes": 760,
+      "layovers": [
+        {
+          "airport": "ORD",
+          "minutes": 47,
+          "overnight": false
+        }
+      ]
+    },
+    {
       "price": 1932,
       "stops": 1,
       "airlines": [
@@ -1866,7 +1922,28 @@
       ]
     },
     {
-      "price": 1941,
+      "price": 1935,
+      "stops": 1,
+      "airlines": [
+        "Lufthansa"
+      ],
+      "flights": [
+        "LH 481",
+        "LH 1868"
+      ],
+      "departure": "2027-04-19 16:00",
+      "arrival": "2027-04-20 15:05",
+      "durationMinutes": 905,
+      "layovers": [
+        {
+          "airport": "MUC",
+          "minutes": 235,
+          "overnight": false
+        }
+      ]
+    },
+    {
+      "price": 1942,
       "stops": 1,
       "airlines": [
         "British Airways"
@@ -1887,28 +1964,7 @@
       ]
     },
     {
-      "price": 1951,
-      "stops": 1,
-      "airlines": [
-        "American"
-      ],
-      "flights": [
-        "AA 2276",
-        "AA 110"
-      ],
-      "departure": "2027-04-19 12:24",
-      "arrival": "2027-04-20 10:20",
-      "durationMinutes": 836,
-      "layovers": [
-        {
-          "airport": "ORD",
-          "minutes": 130,
-          "overnight": false
-        }
-      ]
-    },
-    {
-      "price": 1951,
+      "price": 1952,
       "stops": 1,
       "airlines": [
         "Delta"
@@ -1929,7 +1985,7 @@
       ]
     },
     {
-      "price": 1953,
+      "price": 1954,
       "stops": 1,
       "airlines": [
         "Lufthansa"
